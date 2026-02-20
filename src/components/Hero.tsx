@@ -1,12 +1,12 @@
-import { ArrowRight, Shield, Cpu, Globe, Puzzle, LayoutDashboard, KeyRound } from 'lucide-react'
+import { ArrowRight, Shield, Cpu, Puzzle, LayoutDashboard, KeyRound, Zap } from 'lucide-react'
 
 const BADGES = [
-  { icon: Cpu,             label: 'Native desktop app'            },
-  { icon: Globe,           label: 'Web app — any browser'         },
+  { icon: Cpu,             label: 'Real AI runs on your machine'  },
   { icon: Shield,          label: 'Keys never leave your device'  },
   { icon: Puzzle,          label: '20+ Mini-Apps & growing'       },
   { icon: LayoutDashboard, label: 'One dashboard, everything'     },
   { icon: KeyRound,        label: 'Bring your own API key'        },
+  { icon: Zap,             label: 'Zero token markup'             },
 ]
 
 const STATS = [
@@ -47,10 +47,8 @@ export default function Hero() {
         className="relative max-w-5xl text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight animate-fade-up"
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
-        A <span className="gradient-text">real AI assistant</span><br />
-        as a <em className="not-italic underline decoration-indigo-500/50 decoration-4 underline-offset-4">desktop app</em>{' '}
-        <span className="text-gray-500">+</span>{' '}
-        <em className="not-italic underline decoration-cyan-500/50 decoration-4 underline-offset-4">web app</em>.
+        Your <span className="gradient-text">real AI assistant</span>,<br />
+        runs on your machine.
       </h1>
 
       {/* Sub */}
@@ -58,9 +56,9 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        Install the <strong className="text-white font-medium">desktop app</strong> — it runs your AI locally with your own keys.
-        Then control it from the <strong className="text-white font-medium">web app</strong> on any device, anywhere.
-        One platform, 20+ Mini-Apps, zero token markup.
+        Bring your own API keys and run <strong className="text-white font-medium">20+ Mini-Apps</strong> locally with{' '}
+        <strong className="text-white font-medium">zero token markup</strong>.
+        One platform to install, manage, and automate your entire AI workflow.
       </p>
 
       {/* CTAs */}
