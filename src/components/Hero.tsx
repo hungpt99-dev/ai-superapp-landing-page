@@ -1,9 +1,9 @@
 import { ArrowRight, Shield, Cpu, Globe, Puzzle, LayoutDashboard, KeyRound } from 'lucide-react'
 
 const BADGES = [
-  { icon: Cpu,             label: 'Real AI runs on your machine'  },
+  { icon: Cpu,             label: 'Native desktop app'            },
+  { icon: Globe,           label: 'Web app — any browser'         },
   { icon: Shield,          label: 'Keys never leave your device'  },
-  { icon: Globe,           label: 'Control from any browser'      },
   { icon: Puzzle,          label: '20+ Mini-Apps & growing'       },
   { icon: LayoutDashboard, label: 'One dashboard, everything'     },
   { icon: KeyRound,        label: 'Bring your own API key'        },
@@ -48,7 +48,9 @@ export default function Hero() {
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
         A <span className="gradient-text">real AI assistant</span><br />
-        that lives on <em className="not-italic underline decoration-indigo-500/50 decoration-4 underline-offset-4">your machine</em>.
+        as a <em className="not-italic underline decoration-indigo-500/50 decoration-4 underline-offset-4">desktop app</em>{' '}
+        <span className="text-gray-500">+</span>{' '}
+        <em className="not-italic underline decoration-cyan-500/50 decoration-4 underline-offset-4">web app</em>.
       </h1>
 
       {/* Sub */}
@@ -56,11 +58,9 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        AI SuperApp is your personal AI runtime — install powerful{' '}
-        <strong className="text-white font-medium">Mini-Apps</strong>, manage everything from one dashboard,
-        and run it all with{' '}
-        <strong className="text-white font-medium">your own API keys</strong> at zero markup.
-        Access it from any browser, anywhere.
+        Install the <strong className="text-white font-medium">desktop app</strong> — it runs your AI locally with your own keys.
+        Then control it from the <strong className="text-white font-medium">web app</strong> on any device, anywhere.
+        One platform, 20+ Mini-Apps, zero token markup.
       </p>
 
       {/* CTAs */}
