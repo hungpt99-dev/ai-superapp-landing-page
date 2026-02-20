@@ -44,7 +44,7 @@ export default function HowItWorks() {
             Up and running in <span className="gradient-text">4 steps</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            No server config, no DevOps. Just install, connect your keys, and start building.
+            No server config, no DevOps. Install, connect your keys, and your real AI assistant is ready.
           </p>
         </div>
 

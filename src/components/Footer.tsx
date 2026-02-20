@@ -22,7 +22,7 @@ export default function Footer() {
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
-              The operating system for personal AI workflows.
+              Your real AI assistant. Powered by your own keys.
             </p>
             <div className="flex items-center gap-3">
               <a href="#" className="w-9 h-9 glass rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors">

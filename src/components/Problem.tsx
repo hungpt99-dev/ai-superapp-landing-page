@@ -29,10 +29,10 @@ export default function Problem() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">The Problem</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Every solution is <span className="gradient-text">broken</span> in some way.
+            Nobody has built a <span className="gradient-text">real AI assistant</span> yet.
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            No platform combines rich web UI, local AI execution, your own keys, and a mini-app ecosystem.
+            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine, uses your keys, and grows with mini-apps.
           </p>
         </div>
 
@@ -63,14 +63,14 @@ export default function Problem() {
         <div className="glass rounded-2xl p-8 glow text-center">
           <p className="text-sm text-indigo-400 font-semibold uppercase tracking-widest mb-3">The Solution</p>
           <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">
-            AI SuperApp combines everything. For the first time.
+            AI SuperApp is your <span className="gradient-text">real AI assistant</span>. Finally.
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              'Rich Web UI from any browser',
-              'AI runs locally on your desktop',
-              'Bring Your Own API Key',
-              'Growing Mini-App ecosystem',
+              'A real AI assistant, not a chatbot',
+              'Runs locally on your own machine',
+              'Bring Your Own API Key — zero markup',
+              'Supercharged by 20+ Mini-Apps',
             ].map(item => (
               <div key={item} className="flex items-start gap-2 text-sm text-left text-gray-300 bg-white/5 rounded-xl px-4 py-3">
                 <Check size={15} className="text-indigo-400 mt-0.5 shrink-0" />

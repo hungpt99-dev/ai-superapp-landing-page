@@ -183,7 +183,7 @@ export default function Hero() {
           </div>
         </div>
         <p className="text-center text-xs text-gray-700 mt-3">
-          Manage all your AI tools from one clean dashboard
+          Your real AI assistant — ready to work, right on your machine
         </p>
       </div>
     </section>

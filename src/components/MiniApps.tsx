@@ -118,12 +118,12 @@ export default function MiniApps() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Mini-App Marketplace</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            One platform,{' '}
-            <span className="gradient-text">infinite AI tools.</span>
+            Give your AI assistant{' '}
+            <span className="gradient-text">superpowers.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Install community-built Mini-Apps or build your own with the open SDK.
-            Developers earn 70% of every sale.
+            Mini-Apps are your AI assistant's skills — writing, coding, research, automation and more.
+            Install in one click, or build your own and earn 70% of every sale.
           </p>
         </div>
 
