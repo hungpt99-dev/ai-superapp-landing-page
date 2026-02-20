@@ -6,8 +6,8 @@ import {
 
 const FEATURE_GROUPS = [
   {
-    group: '🤖 Real Local AI',
-    subtitle: 'Your machine is the engine. 100% local execution.',
+    group: '🤖 Real AI Assistant',
+    subtitle: 'Your machine is the engine. Your keys. Your data. Your control.',
     items: [
       {
         icon: MonitorSmartphone,
@@ -120,7 +120,7 @@ export default function Features() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Features</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Local AI. Rich ecosystem.<br />
+            Real AI assistant. Rich ecosystem.<br />
             <span className="gradient-text">Simple management.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
