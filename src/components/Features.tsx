@@ -1,7 +1,7 @@
 import {
   Lock, Wifi, Puzzle, Zap, BarChart3,
   RefreshCw, ShieldCheck, LayoutDashboard, MonitorSmartphone,
-  PackageCheck, Users,
+  PackageCheck, Users, Shield, EyeOff,
 } from 'lucide-react'
 
 const FEATURE_GROUPS = [
@@ -11,8 +11,8 @@ const FEATURE_GROUPS = [
     items: [
       {
         icon: MonitorSmartphone,
-        title: 'Runs on Your Machine',
-        description: 'Every AI call, every tool execution, every file operation happens on your desktop — not in some cloud VM you don\'t control.',
+        title: 'Agent on Your Machine',
+        description: 'The AI SuperApp agent runs on your own desktop. Tool execution, file access, and mini-app orchestration all happen on your machine — not a remote cloud VM.',
         color: 'text-indigo-400',
         bg: 'bg-indigo-400/10 border-indigo-400/20',
       },
@@ -87,7 +87,7 @@ const FEATURE_GROUPS = [
       {
         icon: BarChart3,
         title: 'Usage Analytics',
-        description: 'Track token usage, run counts, and Mini-App performance across all workspaces. Spot costs before they grow.',
+        description: 'Track run counts and Mini-App performance across all workspaces. Spot trends before they become problems.',
         color: 'text-teal-400',
         bg: 'bg-teal-400/10 border-teal-400/20',
       },
@@ -107,6 +107,40 @@ const FEATURE_GROUPS = [
       },
     ],
   },
+  {
+    group: '🔒 Security',
+    subtitle: 'Private by design. Secure at every layer.',
+    items: [
+      {
+        icon: Lock,
+        title: 'No Data Storage',
+        description: 'We never store your prompts, outputs, or conversation data. The relay forwards your requests and immediately discards them.',
+        color: 'text-green-400',
+        bg: 'bg-green-400/10 border-green-400/20',
+      },
+      {
+        icon: ShieldCheck,
+        title: 'Sandboxed Mini-Apps',
+        description: 'Every Mini-App runs in a sandboxed environment. It declares its required permissions upfront — you grant or deny each one explicitly.',
+        color: 'text-rose-400',
+        bg: 'bg-rose-400/10 border-rose-400/20',
+      },
+      {
+        icon: EyeOff,
+        title: 'Encrypted Relay',
+        description: 'All traffic between your browser and agent is TLS-encrypted. The relay never inspects, logs, or reads your content.',
+        color: 'text-purple-400',
+        bg: 'bg-purple-400/10 border-purple-400/20',
+      },
+      {
+        icon: Shield,
+        title: 'Open Source Agent',
+        description: 'The desktop agent is fully open source. Inspect every line, build it yourself, and trust what runs on your machine.',
+        color: 'text-amber-400',
+        bg: 'bg-amber-400/10 border-amber-400/20',
+      },
+    ],
+  },
 ]
 
 export default function Features() {
@@ -120,11 +154,11 @@ export default function Features() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Features</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Real AI assistant. Rich ecosystem.<br />
-            <span className="gradient-text">Simple management.</span>
+            Real assistant. Powerful ecosystem.<br />
+            <span className="gradient-text">Easy management. Secure.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Three pillars that make AI SuperApp unlike anything else.
+            Four pillars that make AI SuperApp unlike anything else.
           </p>
         </div>
 

@@ -1,18 +1,18 @@
 import { ArrowRight, Shield, Cpu, Puzzle, LayoutDashboard, Zap } from 'lucide-react'
 
 const BADGES = [
-  { icon: Cpu,             label: 'Agent runs on your machine'    },
-  { icon: Shield,          label: 'Private & secure by default'   },
+  { icon: Cpu,             label: 'Real AI assistant'             },
   { icon: Puzzle,          label: '20+ Mini-Apps & growing'       },
   { icon: LayoutDashboard, label: 'One dashboard, everything'     },
+  { icon: Shield,          label: 'Secure & private by design'    },
   { icon: Zap,             label: 'No extra cloud layer'          },
 ]
 
 const STATS = [
-  { value: '20+',   label: 'Mini-Apps'        },
-  { value: '100%',  label: 'Your machine'      },
-  { value: '0',     label: 'Extra cloud layer' },
-  { value: '1-click', label: 'Setup'           },
+  { value: '20+',     label: 'Mini-Apps'      },
+  { value: '1',       label: 'Dashboard'      },
+  { value: '100%',    label: 'Private'        },
+  { value: '1-click', label: 'Setup'          },
 ]
 
 export default function Hero() {
@@ -55,9 +55,9 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        Run <strong className="text-white font-medium">20+ Mini-Apps</strong> powered by real AI.
-        The agent lives on your machine — no extra cloud layer between you and your AI provider.
-        One platform to install, manage, and automate your entire AI workflow.
+        A <strong className="text-white font-medium">real AI assistant</strong> powered by{' '}
+        <strong className="text-white font-medium">20+ Mini-Apps</strong>, managed from one dashboard,
+        and built with <strong className="text-white font-medium">security first</strong>.
       </p>
 
       {/* CTAs */}

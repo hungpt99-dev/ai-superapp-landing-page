@@ -16,10 +16,10 @@ export default function CTA() {
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
               Your real AI assistant.<br />
-              <span className="gradient-text">Running for you.</span>
+              <span className="gradient-text">Powerful. Managed. Secure.</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10">
-              Join thousands of power users running AI SuperApp on their desktop today.
+              20+ Mini-Apps. One dashboard. Security built in.<br />
               Get started for free — no credit card needed.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">

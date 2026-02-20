@@ -68,9 +68,9 @@ export default function Problem() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
               'A real AI assistant, not a chatbot',
-              'Agent runs on your machine, no extra cloud layer',
-              'AI runs 100% on your own machine',
-              'Supercharged by 20+ Mini-Apps',
+              'Powerful mini-app ecosystem — 20+ tools',
+              'One dashboard, easy to manage',
+              'Secure & private by design',
             ].map(item => (
               <div key={item} className="flex items-start gap-2 text-sm text-left text-gray-300 bg-white/5 rounded-xl px-4 py-3">
                 <Check size={15} className="text-indigo-400 mt-0.5 shrink-0" />
