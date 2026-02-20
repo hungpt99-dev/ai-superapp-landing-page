@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-gray-950 text-gray-100 font-sans antialiased;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent;
+  }
+  .glass {
+    @apply bg-white/5 backdrop-blur-sm border border-white/10;
+  }
+  .glow {
+    box-shadow: 0 0 60px -15px rgba(99, 102, 241, 0.5);
+  }
+  .glow-sm {
+    box-shadow: 0 0 30px -8px rgba(99, 102, 241, 0.4);
+  }
+}
