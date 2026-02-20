@@ -11,7 +11,7 @@ const PROBLEMS = [
     icon: Cloud,
     title: 'AI SaaS Platforms',
     examples: 'ChatGPT, Claude, Jasper',
-    pains: ['Token markup charges', 'Your data stored in cloud', 'No customization'],
+    pains: ['No local execution', 'Your data stored in cloud', 'No customization'],
   },
   {
     icon: Monitor,
@@ -69,7 +69,7 @@ export default function Problem() {
             {[
               'A real AI assistant, not a chatbot',
               'Runs locally on your own machine',
-              'Zero AI token markup — ever',
+              'AI runs 100% on your own machine',
               'Supercharged by 20+ Mini-Apps',
             ].map(item => (
               <div key={item} className="flex items-start gap-2 text-sm text-left text-gray-300 bg-white/5 rounded-xl px-4 py-3">

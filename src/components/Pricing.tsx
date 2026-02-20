@@ -66,11 +66,10 @@ export default function Pricing() {
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Pricing</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             Simple pricing,{' '}
-            <span className="gradient-text">zero AI markup.</span>
+            <span className="gradient-text">no surprises.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            You pay AI providers directly at their published rates.
-            We only charge for platform access.
+            Pay only for platform access. Use any AI provider you already subscribe to.
           </p>
         </div>
 
