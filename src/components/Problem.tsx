@@ -11,7 +11,7 @@ const PROBLEMS = [
     icon: Cloud,
     title: 'AI SaaS Platforms',
     examples: 'ChatGPT, Claude, Jasper',
-    pains: ['No local execution', 'Your data stored in cloud', 'No customization'],
+    pains: ['Extra cloud layer in the middle', 'Your data stored by the SaaS', 'No customization'],
   },
   {
     icon: Monitor,
@@ -68,7 +68,7 @@ export default function Problem() {
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
               'A real AI assistant, not a chatbot',
-              'Runs locally on your own machine',
+              'Agent runs on your machine, no extra cloud layer',
               'AI runs 100% on your own machine',
               'Supercharged by 20+ Mini-Apps',
             ].map(item => (

@@ -1,17 +1,17 @@
 import { ArrowRight, Shield, Cpu, Puzzle, LayoutDashboard, Zap } from 'lucide-react'
 
 const BADGES = [
-  { icon: Cpu,             label: 'Real AI runs on your machine'  },
+  { icon: Cpu,             label: 'Agent runs on your machine'    },
   { icon: Shield,          label: 'Private & secure by default'   },
   { icon: Puzzle,          label: '20+ Mini-Apps & growing'       },
   { icon: LayoutDashboard, label: 'One dashboard, everything'     },
-  { icon: Zap,             label: 'Instant local execution'       },
+  { icon: Zap,             label: 'No extra cloud layer'          },
 ]
 
 const STATS = [
   { value: '20+',   label: 'Mini-Apps'        },
-  { value: '100%',  label: 'Local execution'   },
-  { value: '0ms',   label: 'Cloud round-trip'  },
+  { value: '100%',  label: 'Your machine'      },
+  { value: '0',     label: 'Extra cloud layer' },
   { value: '1-click', label: 'Setup'           },
 ]
 
@@ -47,7 +47,7 @@ export default function Hero() {
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
         Your <span className="gradient-text">real AI assistant</span>,<br />
-        runs on your machine.
+        agent runs on your machine.
       </h1>
 
       {/* Sub */}
@@ -55,8 +55,8 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        Run <strong className="text-white font-medium">20+ Mini-Apps</strong> powered by real AI,
-        running <strong className="text-white font-medium">100% on your machine</strong>.
+        Run <strong className="text-white font-medium">20+ Mini-Apps</strong> powered by real AI.
+        The agent lives on your machine — no extra cloud layer between you and your AI provider.
         One platform to install, manage, and automate your entire AI workflow.
       </p>
 
@@ -182,7 +182,7 @@ export default function Hero() {
           </div>
         </div>
         <p className="text-center text-xs text-gray-700 mt-3">
-          Your real AI assistant — ready to work, right on your machine
+          Your real AI assistant — agent on your machine, mini-apps at your command
         </p>
       </div>
     </section>

@@ -7,7 +7,7 @@ import {
 const FEATURE_GROUPS = [
   {
     group: '🤖 Real AI Assistant',
-    subtitle: 'Your machine is the engine. 100% local. 100% private.',
+    subtitle: 'The agent lives on your machine. No extra cloud server between you and your AI provider.',
     items: [
       {
         icon: MonitorSmartphone,
@@ -18,15 +18,15 @@ const FEATURE_GROUPS = [
       },
       {
         icon: Zap,
-        title: 'Zero Cloud Latency',
-        description: 'Every AI call runs on your hardware — no round-trips to distant servers. Responses are instant, even on complex, multi-step tasks.',
+        title: 'Zero Extra Cloud Layer',
+        description: 'The agent and mini-apps run directly on your machine. Calls go straight to your AI provider — no middleware server reading or buffering your requests.',
         color: 'text-yellow-400',
         bg: 'bg-yellow-400/10 border-yellow-400/20',
       },
       {
         icon: Lock,
         title: 'Full Privacy',
-        description: 'Your prompts, outputs, and data never leave your machine. The relay forwards requests but never stores or reads your content.',
+        description: 'Your prompts and outputs are never stored by us. The agent on your machine talks directly to your AI provider — we only relay the connection.',
         color: 'text-green-400',
         bg: 'bg-green-400/10 border-green-400/20',
       },

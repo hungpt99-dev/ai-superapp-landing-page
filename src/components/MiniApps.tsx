@@ -83,7 +83,7 @@ const APPS = [
     emoji: '🔍',
     name: 'Research Agent',
     category: 'Automation',
-    description: 'Give it a topic. It searches, reads, and returns a structured briefing — all running locally.',
+    description: 'Give it a topic. It searches, reads, and returns a structured briefing — orchestrated by the agent on your machine.',
     color: 'from-violet-500/20 to-purple-500/20',
     border: 'border-violet-500/20',
     tag: 'New',
