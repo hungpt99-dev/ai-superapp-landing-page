@@ -8,9 +8,9 @@ const STEPS = [
   },
   {
     step: '02',
-    title: 'Add Your AI Keys',
+    title: 'Configure Your AI Model',
     description:
-      'Paste your OpenAI, Anthropic, or Gemini API key. Keys are encrypted and stored only on your machine — never uploaded.',
+      'Choose your AI provider — OpenAI, Anthropic, Gemini, or Mistral. Everything is configured locally on your machine in seconds.',
     color: 'from-indigo-500 to-purple-500',
   },
   {
@@ -44,7 +44,7 @@ export default function HowItWorks() {
             Up and running in <span className="gradient-text">4 steps</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            No server config, no DevOps. Install, connect your keys, and your real AI assistant is ready.
+            No server config, no DevOps. Install, configure your model, and your real AI assistant is ready.
           </p>
         </div>
 

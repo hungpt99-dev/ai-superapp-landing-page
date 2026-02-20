@@ -1,5 +1,5 @@
 import {
-  KeyRound, Lock, Wifi, Puzzle, Zap, BarChart3,
+  Lock, Wifi, Puzzle, Zap, BarChart3,
   RefreshCw, ShieldCheck, LayoutDashboard, MonitorSmartphone,
   PackageCheck, Users,
 } from 'lucide-react'
@@ -7,7 +7,7 @@ import {
 const FEATURE_GROUPS = [
   {
     group: '🤖 Real AI Assistant',
-    subtitle: 'Your machine is the engine. Your keys. Your data. Your control.',
+    subtitle: 'Your machine is the engine. 100% local. 100% private.',
     items: [
       {
         icon: MonitorSmartphone,
@@ -17,16 +17,16 @@ const FEATURE_GROUPS = [
         bg: 'bg-indigo-400/10 border-indigo-400/20',
       },
       {
-        icon: KeyRound,
-        title: 'Bring Your Own Key',
-        description: 'Connect OpenAI, Anthropic, Gemini, or Mistral. Pay the provider directly at published rates — zero markup, ever.',
+        icon: Zap,
+        title: 'Zero Cloud Latency',
+        description: 'Every AI call runs on your hardware — no round-trips to distant servers. Responses are instant, even on complex, multi-step tasks.',
         color: 'text-yellow-400',
         bg: 'bg-yellow-400/10 border-yellow-400/20',
       },
       {
         icon: Lock,
         title: 'Full Privacy',
-        description: 'Keys are encrypted locally. The relay never sees your credentials, prompts, or outputs. You own every byte.',
+        description: 'Your prompts, outputs, and data never leave your machine. The relay forwards requests but never stores or reads your content.',
         color: 'text-green-400',
         bg: 'bg-green-400/10 border-green-400/20',
       },

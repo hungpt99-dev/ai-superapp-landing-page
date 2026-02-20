@@ -15,8 +15,8 @@ export default function CTA() {
               <Zap size={24} className="text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-              Your AI. Your keys.<br />
-              <span className="gradient-text">Your control.</span>
+              Your real AI assistant.<br />
+              <span className="gradient-text">Running for you.</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10">
               Join thousands of power users running AI SuperApp on their desktop today.

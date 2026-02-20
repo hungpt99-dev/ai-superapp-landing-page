@@ -32,7 +32,7 @@ export default function Problem() {
             Nobody has built a <span className="gradient-text">real AI assistant</span> yet.
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine, uses your keys, and grows with mini-apps.
+            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine and grows with mini-apps.
           </p>
         </div>
 
@@ -69,7 +69,7 @@ export default function Problem() {
             {[
               'A real AI assistant, not a chatbot',
               'Runs locally on your own machine',
-              'Bring Your Own API Key — zero markup',
+              'Zero AI token markup — ever',
               'Supercharged by 20+ Mini-Apps',
             ].map(item => (
               <div key={item} className="flex items-start gap-2 text-sm text-left text-gray-300 bg-white/5 rounded-xl px-4 py-3">
