@@ -46,8 +46,8 @@ export default function Hero() {
         className="relative max-w-5xl text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight animate-fade-up"
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
-        Your <span className="gradient-text">real AI assistant</span>,<br />
-        agent runs on your machine.
+        AgentHub — the operating system<br />
+        for trustworthy AI agents.
       </h1>
 
       {/* Sub */}
@@ -55,9 +55,8 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        A <strong className="text-white font-medium">real AI assistant</strong> powered by{' '}
-        <strong className="text-white font-medium">20+ Mini-Apps</strong>, managed from one dashboard,
-        and built with <strong className="text-white font-medium">security first</strong>.
+        Deterministic, permissioned agent runtime with memory, tools, and a
+        marketplace — deploy agents as trusted digital employees on desktop or web.
       </p>
 
       {/* CTAs */}
@@ -118,10 +117,10 @@ export default function Hero() {
             <span className="w-3 h-3 rounded-full bg-red-500/60" />
             <span className="w-3 h-3 rounded-full bg-yellow-500/60" />
             <span className="w-3 h-3 rounded-full bg-green-500/60" />
-            <span className="ml-3 text-xs text-gray-600">AI SuperApp — Dashboard</span>
+            <span className="ml-3 text-xs text-gray-600">AgentHub — Dashboard</span>
             <span className="ml-auto flex items-center gap-1.5 text-xs text-green-400">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-slow" />
-              Desktop Agent Online
+              Agent runtime online
             </span>
           </div>
           {/* Dashboard layout */}
