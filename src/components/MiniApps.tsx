@@ -1,4 +1,5 @@
 import { ArrowRight, Code2, TrendingUp, DollarSign } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 const CATEGORIES = [
   { label: 'All',         active: true  },
@@ -185,12 +186,12 @@ export default function MiniApps() {
                 Use our open-source TypeScript SDK to build and publish AI Mini-Apps to thousands of users.
                 You keep 70% of every sale — we handle distribution, billing, and updates.
               </p>
-              <a
-                href="#"
+              <Link
+                to="/docs/sdk"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white text-sm font-semibold transition-all glow-sm"
               >
                 Read the SDK docs <ArrowRight size={14} />
-              </a>
+              </Link>
             </div>
             <div className="grid gap-3">
               {DEV_STATS.map(({ icon: Icon, value, label }) => (

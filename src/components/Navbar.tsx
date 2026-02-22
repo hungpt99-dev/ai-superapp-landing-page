@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import { Zap, Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
@@ -47,6 +48,11 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <Link to="/docs" className="text-sm text-gray-400 hover:text-white transition-colors">
+              Docs
+            </Link>
+          </li>
         </ul>
 
         {/* CTA */}
@@ -85,6 +91,13 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <Link
+            to="/docs"
+            className="text-gray-300 hover:text-white transition-colors"
+            onClick={() => setMobileOpen(false)}
+          >
+            Docs
+          </Link>
           <a
             href="#pricing"
             className="mt-2 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white font-medium transition-colors"

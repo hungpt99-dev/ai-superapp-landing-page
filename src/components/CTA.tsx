@@ -1,4 +1,5 @@
 import { ArrowRight, Zap } from 'lucide-react'
+import { Link } from 'react-router-dom'
 
 export default function CTA() {
   return (
@@ -30,12 +31,12 @@ export default function CTA() {
                 Download Desktop Agent
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
-              <a
-                href="#how-it-works"
+              <Link
+                to="/docs"
                 className="px-8 py-4 rounded-xl glass hover:bg-white/10 text-gray-200 font-semibold text-base transition-all"
               >
                 View documentation
-              </a>
+              </Link>
             </div>
           </div>
         </div>

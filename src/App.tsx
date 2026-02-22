@@ -1,27 +1,37 @@
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import Problem from './components/Problem'
-import HowItWorks from './components/HowItWorks'
-import Features from './components/Features'
-import MiniApps from './components/MiniApps'
-import Pricing from './components/Pricing'
-import CTA from './components/CTA'
 import Footer from './components/Footer'
+import LandingPage from './pages/LandingPage'
+import DocsLayout from './pages/docs/DocsLayout'
+import OverviewPage from './pages/docs/OverviewPage'
+import QuickstartPage from './pages/docs/QuickstartPage'
+import SDKPage from './pages/docs/SDKPage'
+import APIPage from './pages/docs/APIPage'
 
-export default function App() {
+function LandingLayout() {
   return (
     <div className="min-h-screen">
       <Navbar />
-      <main>
-        <Hero />
-        <Problem />
-        <HowItWorks />
-        <Features />
-        <MiniApps />
-        <Pricing />
-        <CTA />
-      </main>
+      <LandingPage />
       <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LandingLayout />} />
+        <Route path="/docs" element={<DocsLayout />}>
+          <Route index element={<Navigate to="/docs/overview" replace />} />
+          <Route path="overview" element={<OverviewPage />} />
+          <Route path="quickstart" element={<QuickstartPage />} />
+          <Route path="sdk" element={<SDKPage />} />
+          <Route path="api" element={<APIPage />} />
+        </Route>
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </BrowserRouter>
   )
 }

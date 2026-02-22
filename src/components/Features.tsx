@@ -26,7 +26,7 @@ const FEATURE_GROUPS = [
       {
         icon: Lock,
         title: 'Full Privacy',
-        description: 'Your prompts and outputs are never stored by us. The agent on your machine talks directly to your AI provider — we only relay the connection.',
+        description: 'Your prompts and outputs are never stored by us. The Desktop Agent on your machine talks directly to your AI provider — the platform only manages devices and task queue.',
         color: 'text-green-400',
         bg: 'bg-green-400/10 border-green-400/20',
       },
@@ -114,7 +114,7 @@ const FEATURE_GROUPS = [
       {
         icon: Lock,
         title: 'No Data Storage',
-        description: 'We never store your prompts, outputs, or conversation data. The relay forwards your requests and immediately discards them.',
+        description: 'We never store your prompts or AI outputs. Your data goes directly from your machine to your AI provider — the platform stores only device registrations, bot metadata, and run status.',
         color: 'text-green-400',
         bg: 'bg-green-400/10 border-green-400/20',
       },
@@ -127,8 +127,8 @@ const FEATURE_GROUPS = [
       },
       {
         icon: EyeOff,
-        title: 'Encrypted Relay',
-        description: 'All traffic between your browser and agent is TLS-encrypted. The relay never inspects, logs, or reads your content.',
+        title: 'End-to-End Encrypted',
+        description: 'All traffic between your Desktop Agent and the management backend is TLS-encrypted. The backend never sees your AI prompts, outputs, or API keys.',
         color: 'text-purple-400',
         bg: 'bg-purple-400/10 border-purple-400/20',
       },
