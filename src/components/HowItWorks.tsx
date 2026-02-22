@@ -3,7 +3,7 @@ const STEPS = [
     step: '01',
     title: 'Install the Desktop Agent',
     description:
-      'Download the lightweight AI SuperApp desktop client for macOS, Windows, or Linux. One-click install, auto-configured.',
+      'Download the lightweight AgentHub desktop client for macOS, Windows, or Linux. One-click install, auto-configured.',
     color: 'from-blue-500 to-indigo-500',
   },
   {
@@ -22,9 +22,9 @@ const STEPS = [
   },
   {
     step: '04',
-    title: 'Run Your Mini-Apps',
+    title: 'Run Your Agents',
     description:
-      'Launch AI-powered tools from the web. Your desktop executes everything — AI calls, file access, tool use — and streams results back.',
+      'Launch AI-powered agents from the web. Your desktop executes everything — AI calls, file access, tool use — and streams results back.',
     color: 'from-pink-500 to-rose-500',
   },
 ]

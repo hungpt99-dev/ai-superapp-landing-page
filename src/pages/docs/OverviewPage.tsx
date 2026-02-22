@@ -10,11 +10,11 @@ export default function OverviewPage() {
           Documentation
         </p>
         <h1 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
-          AI SuperApp Overview
+          AgentHub Overview
         </h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          AI SuperApp is a platform that brings a real AI assistant to your desktop and makes
-          it controllable from any browser — with a growing ecosystem of Mini-App tools you
+          AgentHub is a platform that brings a real AI assistant to your desktop and makes
+          it controllable from any browser — with a growing ecosystem of agents you
           can install, run, and build.
         </p>
       </div>
@@ -36,7 +36,7 @@ export default function OverviewPage() {
               bg: 'bg-indigo-400/10 border-indigo-400/20',
               title: 'Desktop Agent',
               subtitle: 'Runs on your machine',
-              desc: 'The Electron + React desktop client. Executes Mini-Apps, talks directly to your AI provider, and polls the backend for bot tasks.',
+              desc: 'The Electron + React desktop client. Executes agents, talks directly to your AI provider, and polls the backend for bot tasks.',
             },
             {
               icon: Server,
@@ -52,7 +52,7 @@ export default function OverviewPage() {
               bg: 'bg-cyan-400/10 border-cyan-400/20',
               title: 'Web Dashboard',
               subtitle: 'Control from any browser',
-              desc: 'A React web app that lets you manage devices, create bots, monitor runs, and browse the Mini-App marketplace from any browser.',
+              desc: 'A React web app that lets you manage devices, create bots, monitor runs, and browse the agent marketplace from any browser.',
             },
           ].map(({ icon: Icon, color, bg, title, subtitle, desc }) => (
             <div key={title} className="glass rounded-xl p-5 flex flex-col gap-3">
@@ -121,8 +121,8 @@ export default function OverviewPage() {
             {
               icon: Puzzle,
               color: 'text-purple-400',
-              title: 'Mini-Apps',
-              desc: 'Self-contained AI tools built with the TypeScript SDK. Each Mini-App declares its required permissions upfront. Users install them from the marketplace with one click. Developers earn 70% of every sale.',
+              title: 'Agents',
+              desc: 'Self-contained AI tools built with the TypeScript SDK. Each agent declares its required permissions upfront. Users install them from the marketplace with one click. Developers earn 70% of every sale.',
             },
             {
               icon: Bot,
@@ -170,14 +170,14 @@ export default function OverviewPage() {
             {
               to: '/docs/quickstart',
               title: 'Quickstart',
-              desc: 'Install the Desktop Agent and run your first Mini-App in under 5 minutes.',
+              desc: 'Install the Desktop Agent and run your first agent in under 5 minutes.',
               badge: 'Start here',
               badgeColor: 'bg-indigo-600 text-white',
             },
             {
               to: '/docs/sdk',
               title: 'SDK Reference',
-              desc: 'Full TypeScript SDK documentation for building your own Mini-Apps.',
+              desc: 'Full TypeScript SDK documentation for building your own agents.',
               badge: 'Developers',
               badgeColor: 'bg-purple-600/30 text-purple-300',
             },

@@ -70,11 +70,11 @@ export default function SDKPage() {
           SDK Reference
         </p>
         <h1 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
-          Mini-App SDK
+          Agent SDK
         </h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          The TypeScript SDK for building and publishing AI Mini-Apps on the AI SuperApp platform.
-          Every Mini-App is a module declared with <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">defineModule</code>.
+          The TypeScript SDK for building and publishing agents on the AgentHub platform.
+          Every agent is a module declared with <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">defineModule</code>.
         </p>
       </div>
 
@@ -84,8 +84,8 @@ export default function SDKPage() {
           <Package size={18} className="text-indigo-400" />
           <h2 className="text-xl font-bold text-white">Installation</h2>
         </div>
-        <CodeBlock lang="shell" code={`npm install @ai-superapp/sdk`} />
-        <CodeBlock code={`import { defineModule, Permission } from '@ai-superapp/sdk'`} />
+        <CodeBlock lang="shell" code={`npm install @agenthub/sdk`} />
+        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'`} />
       </section>
 
       <hr className="border-white/10 mb-12" />
@@ -97,10 +97,10 @@ export default function SDKPage() {
           icon={Package}
           color="bg-indigo-400/10 border-indigo-400/20 text-indigo-400"
           title="defineModule"
-          subtitle="The entry point for every Mini-App — declare your manifest, permissions, tools, and lifecycle hooks."
+          subtitle="The entry point for every agent — declare your manifest, permissions, tools, and lifecycle hooks."
         />
         <p className="text-gray-400 text-sm leading-relaxed mb-4">
-          All Mini-Apps <strong className="text-gray-200">must</strong> use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">defineModule</code> as their default export.
+          All agents <strong className="text-gray-200">must</strong> use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">defineModule</code> as their default export.
           Never export raw objects or use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">module.exports</code>.
         </p>
 

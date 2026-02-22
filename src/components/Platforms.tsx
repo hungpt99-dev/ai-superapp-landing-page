@@ -8,12 +8,12 @@ const PLATFORMS = [
     badgeColor: 'bg-indigo-500/20 text-indigo-300 border-indigo-500/30',
     headline: 'The full power of AI, running natively on your machine.',
     description:
-      'Install the AI SuperApp desktop client on macOS, Windows, or Linux. All Mini-Apps, AI calls, and file operations run directly on your hardware — ultra-fast, fully private, no cloud dependency.',
+      'Install the AgentHub desktop client on macOS, Windows, or Linux. All agents, AI calls, and file operations run directly on your hardware — ultra-fast, fully private, no cloud dependency.',
     highlights: [
       'macOS, Windows & Linux',
       'Native performance, no browser overhead',
-      'Local file & clipboard access for Mini-Apps',
-      'Works offline for supported Mini-Apps',
+      'Local file & clipboard access for agents',
+      'Works offline for supported agents',
       'Auto-updates in the background',
     ],
     cta: 'Download Desktop App',
@@ -32,7 +32,7 @@ const PLATFORMS = [
           <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
           <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
           <span className="w-2.5 h-2.5 rounded-full bg-green-500/60" />
-          <span className="ml-2 text-xs text-gray-600">AI SuperApp</span>
+          <span className="ml-2 text-xs text-gray-600">AgentHub</span>
         </div>
         <div className="p-4 flex flex-col gap-2">
           {[
@@ -59,11 +59,11 @@ const PLATFORMS = [
     badgeColor: 'bg-cyan-500/20 text-cyan-300 border-cyan-500/30',
     headline: 'Control your AI from any browser, on any device.',
     description:
-      'Open the AI SuperApp web dashboard from your phone, tablet, or any computer. Your desktop agent handles all execution — the web app is your remote control, accessible from anywhere in the world.',
+      'Open the AgentHub web dashboard from your phone, tablet, or any computer. Your desktop agent handles all execution — the web app is your remote control, accessible from anywhere in the world.',
     highlights: [
       'Any browser, any device, any network',
       'Real-time streaming from your desktop',
-      'Full Mini-App UI rendered in the browser',
+      'Full agent UI rendered in the browser',
       'No installation needed on the remote device',
       'Secure relay — no AI data stored in cloud',
     ],
@@ -75,8 +75,8 @@ const PLATFORMS = [
     glow: 'glow-sm',
     visual: (
       <div className="glass rounded-xl overflow-hidden">
-        <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-white/[0.03]">
-          <div className="flex-1 bg-white/5 rounded-md px-2 py-1 text-xs text-gray-600">app.aisuperapp.com</div>
+          <div className="flex items-center gap-2 px-3 py-2 border-b border-white/10 bg-white/[0.03]">
+          <div className="flex-1 bg-white/5 rounded-md px-2 py-1 text-xs text-gray-600">app.agenthub.com</div>
           <span className="w-2 h-2 rounded-full bg-green-400 animate-pulse-slow" />
         </div>
         <div className="p-4 flex flex-col gap-2">

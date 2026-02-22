@@ -79,15 +79,15 @@ export default function APIPage() {
           API Reference
         </h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          The AI SuperApp backend exposes a RESTful HTTP API for authentication, device management,
-          bot runs, workspaces, and the Mini-App marketplace. All endpoints return JSON.
+          The AgentHub backend exposes a RESTful HTTP API for authentication, device management,
+          bot runs, workspaces, and the agent marketplace. All endpoints return JSON.
         </p>
       </div>
 
       {/* Base URL */}
       <div className="glass rounded-xl p-5 mb-8 flex items-center gap-3">
         <span className="text-xs font-semibold text-gray-500 uppercase tracking-widest shrink-0">Base URL</span>
-        <code className="font-mono text-indigo-300 text-sm">https://api.aisuperapp.com</code>
+        <code className="font-mono text-indigo-300 text-sm">https://api.agenthub.com</code>
       </div>
 
       <hr className="border-white/10 mb-10" />
@@ -106,22 +106,22 @@ export default function APIPage() {
         </p>
 
         <CodeBlock lang="shell" code={`# Register
-curl -X POST https://api.aisuperapp.com/v1/auth/register \\
+curl -X POST https://api.agenthub.com/v1/auth/register \\
   -H "Content-Type: application/json" \\
   -d '{"email":"you@example.com","password":"your-password"}'
 
 # Login → get JWT + refresh token
-curl -X POST https://api.aisuperapp.com/v1/auth/login \\
+curl -X POST https://api.agenthub.com/v1/auth/login \\
   -H "Content-Type: application/json" \\
   -d '{"email":"you@example.com","password":"your-password"}'
 
 # Exchange API key → JWT (desktop agent flow)
-curl -X POST https://api.aisuperapp.com/v1/auth/token \\
+curl -X POST https://api.agenthub.com/v1/auth/token \\
   -H "Content-Type: application/json" \\
   -d '{"api_key":"your-api-key"}'
 
 # Use the JWT on protected endpoints
-curl https://api.aisuperapp.com/v1/auth/me \\
+curl https://api.agenthub.com/v1/auth/me \\
   -H "Authorization: Bearer <jwt>"`} />
 
         <EndpointTable rows={[
@@ -150,13 +150,13 @@ curl https://api.aisuperapp.com/v1/auth/me \\
           (every 30 s) to indicate online status, and can report CPU/memory metrics.
         </p>
         <CodeBlock lang="shell" code={`# Register a new device
-curl -X POST https://api.aisuperapp.com/v1/devices \\
+curl -X POST https://api.agenthub.com/v1/devices \\
   -H "Authorization: Bearer <jwt>" \\
   -H "Content-Type: application/json" \\
   -d '{"name":"My MacBook Pro"}'
 
 # Send heartbeat (Desktop Agent → every 30 seconds)
-curl -X POST https://api.aisuperapp.com/v1/devices/{deviceId}/heartbeat \\
+curl -X POST https://api.agenthub.com/v1/devices/{deviceId}/heartbeat \\
   -H "Authorization: Bearer <jwt>"`} />
 
         <EndpointTable rows={[
@@ -199,23 +199,23 @@ curl -X POST https://api.aisuperapp.com/v1/devices/{deviceId}/heartbeat \\
         </div>
 
         <CodeBlock lang="shell" code={`# Create a bot
-curl -X POST https://api.aisuperapp.com/v1/bots \\
+curl -X POST https://api.agenthub.com/v1/bots \\
   -H "Authorization: Bearer <jwt>" \\
   -H "Content-Type: application/json" \\
   -d '{"name":"Daily SEO Writer","description":"Writes a daily blog post"}'
 
 # Queue a run
-curl -X POST https://api.aisuperapp.com/v1/bots/{botId}/runs \\
+curl -X POST https://api.agenthub.com/v1/bots/{botId}/runs \\
   -H "Authorization: Bearer <jwt>" \\
   -H "Content-Type: application/json" \\
   -d '{"goal":"Write a 500-word post about TypeScript generics"}'
 
 # Desktop Agent: claim next pending run (SKIP LOCKED)
-curl https://api.aisuperapp.com/v1/bots/poll \\
+curl https://api.agenthub.com/v1/bots/poll \\
   -H "Authorization: Bearer <jwt>"
 
 # Desktop Agent: report progress / completion
-curl -X PATCH https://api.aisuperapp.com/v1/bots/runs/{runId} \\
+curl -X PATCH https://api.agenthub.com/v1/bots/runs/{runId} \\
   -H "Authorization: Bearer <jwt>" \\
   -H "Content-Type: application/json" \\
   -d '{"status":"completed","result":"Here is your blog post..."}'`} />
@@ -266,15 +266,15 @@ curl -X PATCH https://api.aisuperapp.com/v1/bots/runs/{runId} \\
           <h2 className="text-xl font-bold text-white">Marketplace</h2>
         </div>
         <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          Browse, install, and uninstall Mini-Apps. The browse endpoints are public
+          Browse, install, and uninstall agents. The browse endpoints are public
           — no auth required. Install/uninstall require a JWT.
         </p>
         <EndpointTable rows={[
-          { method: 'GET',    path: '/v1/marketplace',                     auth: false, desc: 'Browse all published Mini-Apps.' },
-          { method: 'GET',    path: '/v1/marketplace/{appId}',             auth: false, desc: 'Get Mini-App detail.' },
-          { method: 'GET',    path: '/v1/marketplace/installed',           auth: true,  desc: 'List installed Mini-Apps for the current user.' },
-          { method: 'POST',   path: '/v1/marketplace/{appId}/install',     auth: true,  desc: 'Install a Mini-App.' },
-          { method: 'DELETE', path: '/v1/marketplace/{appId}/install',     auth: true,  desc: 'Uninstall a Mini-App.' },
+          { method: 'GET',    path: '/v1/marketplace',                     auth: false, desc: 'Browse all published agents.' },
+          { method: 'GET',    path: '/v1/marketplace/{appId}',             auth: false, desc: 'Get agent detail.' },
+          { method: 'GET',    path: '/v1/marketplace/installed',           auth: true,  desc: 'List installed agents for the current user.' },
+          { method: 'POST',   path: '/v1/marketplace/{appId}/install',     auth: true,  desc: 'Install an agent.' },
+          { method: 'DELETE', path: '/v1/marketplace/{appId}/install',     auth: true,  desc: 'Uninstall an agent.' },
         ]} />
       </section>
 

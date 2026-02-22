@@ -32,7 +32,7 @@ export default function Problem() {
             Nobody has built a <span className="gradient-text">real AI assistant</span> yet.
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine and grows with mini-apps.
+            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine and grows with agents.
           </p>
         </div>
 
@@ -63,12 +63,12 @@ export default function Problem() {
         <div className="glass rounded-2xl p-8 glow text-center">
           <p className="text-sm text-indigo-400 font-semibold uppercase tracking-widest mb-3">The Solution</p>
           <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">
-            AI SuperApp is your <span className="gradient-text">real AI assistant</span>. Finally.
+            AgentHub is your <span className="gradient-text">real AI assistant</span>. Finally.
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
               'A real AI assistant, not a chatbot',
-              'Powerful mini-app ecosystem — 20+ tools',
+              'Powerful agent ecosystem — 20+ agents',
               'One dashboard, easy to manage',
               'Secure & private by design',
             ].map(item => (

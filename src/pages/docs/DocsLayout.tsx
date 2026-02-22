@@ -56,7 +56,7 @@ export default function DocsLayout() {
             <Zap size={14} className="text-white" />
           </span>
           <span className="font-bold text-sm tracking-tight hidden sm:block">
-            AI <span className="gradient-text">SuperApp</span>
+            Agent<span className="gradient-text">Hub</span>
           </span>
         </NavLink>
 

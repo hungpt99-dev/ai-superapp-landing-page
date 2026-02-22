@@ -8,7 +8,7 @@ const STEPS = [
     bg: 'bg-indigo-400/10 border-indigo-400/20',
     step: '01',
     title: 'Install the Desktop Agent',
-    desc: 'Download and install the AI SuperApp Desktop Agent for your OS. The agent runs as a background process and registers itself with the backend.',
+    desc: 'Download and install the AgentHub Desktop Agent for your OS. The agent runs as a background process and registers itself with the backend.',
     code: `# macOS — download from the releases page
 # Or build from source:
 git clone https://github.com/nextlevelbuilder/ai-super-app-desktop
@@ -22,9 +22,9 @@ npm install && npm run dev`,
     bg: 'bg-purple-400/10 border-purple-400/20',
     step: '02',
     title: 'Create an account',
-    desc: 'Register at the web dashboard. The Free plan gives you 1 device, 3 Mini-Apps, and 100 AI runs per month — no credit card required.',
+    desc: 'Register at the web dashboard. The Free plan gives you 1 device, 3 agents, and 100 AI runs per month — no credit card required.',
     code: `# Using the REST API directly:
-curl -X POST https://api.aisuperapp.com/v1/auth/register \\
+curl -X POST https://api.agenthub.com/v1/auth/register \\
   -H "Content-Type: application/json" \\
   -d '{"email":"you@example.com","password":"secret"}'`,
     note: null,
@@ -50,10 +50,10 @@ curl -X POST https://api.aisuperapp.com/v1/auth/register \\
     color: 'text-pink-400',
     bg: 'bg-pink-400/10 border-pink-400/20',
     step: '04',
-    title: 'Install your first Mini-App',
-    desc: 'Open the Marketplace in the Web Dashboard, pick a Mini-App (try "SEO Writer" or "Code Assistant"), review its permissions, and click Install.',
+    title: 'Install your first agent',
+    desc: 'Open the Marketplace in the Web Dashboard, pick an agent (try "SEO Writer" or "Code Assistant"), review its permissions, and click Install.',
     code: `# Install via the API:
-curl -X POST https://api.aisuperapp.com/v1/marketplace/seo-writer/install \\
+curl -X POST https://api.agenthub.com/v1/marketplace/seo-writer/install \\
   -H "Authorization: Bearer <your-jwt>"`,
     note: null,
   },
@@ -65,7 +65,7 @@ curl -X POST https://api.aisuperapp.com/v1/marketplace/seo-writer/install \\
     title: 'Run it from the Dashboard',
     desc: 'Navigate to Bots → New Bot, set a goal, and click Run. The backend queues the task, your Desktop Agent picks it up (usually within seconds), executes it locally, and posts the result back.',
     code: `# Queue a bot run:
-curl -X POST https://api.aisuperapp.com/v1/bots/{botId}/runs \\
+curl -X POST https://api.agenthub.com/v1/bots/{botId}/runs \\
   -H "Authorization: Bearer <your-jwt>" \\
   -H "Content-Type: application/json" \\
   -d '{"goal":"Write a 500-word blog post about TypeScript generics"}'`,
@@ -99,7 +99,7 @@ export default function QuickstartPage() {
           <li>macOS 13+, Windows 11, or Ubuntu 22.04</li>
           <li>Node.js 20+ (for building from source)</li>
           <li>An API key from OpenAI, Anthropic, or any compatible provider</li>
-          <li>A free AI SuperApp account</li>
+          <li>A free AgentHub account</li>
         </ul>
       </div>
 
@@ -159,14 +159,14 @@ export default function QuickstartPage() {
           >
             <div className="flex items-center justify-between">
               <span className="font-semibold text-white group-hover:text-indigo-300 transition-colors">
-                Build a Mini-App
+                Build an Agent
               </span>
               <span className="text-xs px-2 py-0.5 rounded-full bg-purple-600/30 text-purple-300 font-medium">
                 SDK
               </span>
             </div>
             <p className="text-sm text-gray-400 leading-relaxed">
-              Learn the defineModule API and publish your own AI tool to thousands of users.
+              Learn the defineModule API and publish your own agent to thousands of users.
             </p>
             <div className="flex items-center gap-1 text-xs text-indigo-400 font-medium group-hover:gap-2 transition-all mt-1">
               SDK Reference <ArrowRight size={12} />

@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 const LINKS: Record<string, Array<{ label: string; to: string; external?: boolean }>> = {
   Product: [
     { label: 'Features',  to: '/#features' },
-    { label: 'Mini-Apps', to: '/#mini-apps' },
+    { label: 'Agents',    to: '/#agents' },
     { label: 'Pricing',   to: '/#pricing'  },
     { label: 'Changelog', to: '#'          },
   ],
@@ -34,7 +34,7 @@ export default function Footer() {
                 <Zap size={16} className="text-white" />
               </span>
               <span className="font-bold text-lg tracking-tight">
-                AI <span className="gradient-text">SuperApp</span>
+                Agent<span className="gradient-text">Hub</span>
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
@@ -79,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
-          <p className="text-gray-600 text-sm">© 2026 AI SuperApp. All rights reserved.</p>
+          <p className="text-gray-600 text-sm">© 2026 AgentHub. All rights reserved.</p>
           <p className="text-gray-700 text-xs">
             Built with ❤️ — open source desktop, private by design
           </p>

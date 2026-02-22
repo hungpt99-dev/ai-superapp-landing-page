@@ -5,7 +5,7 @@ import { Zap, Menu, X } from 'lucide-react'
 const NAV_LINKS = [
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Features',     href: '#features'     },
-  { label: 'Mini-Apps',    href: '#mini-apps'    },
+  { label: 'Agents',       href: '#agents'       },
   { label: 'Pricing',      href: '#pricing'      },
 ]
 
@@ -32,7 +32,7 @@ export default function Navbar() {
             <Zap size={16} className="text-white" />
           </span>
           <span className="font-bold text-lg tracking-tight">
-            AI <span className="gradient-text">SuperApp</span>
+            Agent<span className="gradient-text">Hub</span>
           </span>
         </a>
 

@@ -104,26 +104,26 @@ const APPS = [
 
 const DEV_STATS = [
   { icon: Code2,      value: 'TypeScript SDK',  label: 'Open-source, typed'      },
-  { icon: TrendingUp, value: '20+ apps',        label: 'And growing weekly'      },
+  { icon: TrendingUp, value: '20+ agents',      label: 'And growing weekly'      },
   { icon: DollarSign, value: '70% revenue',     label: 'Goes to you, the builder' },
 ]
 
 export default function MiniApps() {
   return (
-    <section id="mini-apps" className="py-28 px-6 relative">
+    <section id="agents" className="py-28 px-6 relative">
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute left-1/2 -translate-x-1/2 bottom-0 w-[600px] h-[400px] rounded-full bg-purple-600/5 blur-3xl" />
       </div>
 
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
-          <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Mini-App Marketplace</p>
+          <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Agent Marketplace</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
             Give your AI assistant{' '}
             <span className="gradient-text">superpowers.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Mini-Apps are your AI assistant's skills — writing, coding, research, automation and more.
+            Agents are your AI assistant's skills — writing, coding, research, automation and more.
             Install in one click, or build your own and earn 70% of every sale.
           </p>
         </div>
@@ -179,11 +179,11 @@ export default function MiniApps() {
             <div>
               <p className="text-xs text-indigo-400 font-semibold uppercase tracking-widest mb-3">For Developers</p>
               <h3 className="text-2xl font-extrabold text-white mb-3">
-                Build Mini-Apps.<br />
+                Build agents.<br />
                 <span className="gradient-text">Earn from your tools.</span>
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-5">
-                Use our open-source TypeScript SDK to build and publish AI Mini-Apps to thousands of users.
+                Use our open-source TypeScript SDK to build and publish agents to thousands of users.
                 You keep 70% of every sale — we handle distribution, billing, and updates.
               </p>
               <Link

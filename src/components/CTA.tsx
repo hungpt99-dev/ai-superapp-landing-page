@@ -20,7 +20,7 @@ export default function CTA() {
               <span className="gradient-text">Powerful. Managed. Secure.</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10">
-              20+ Mini-Apps. One dashboard. Security built in.<br />
+              20+ agents. One dashboard. Security built in.<br />
               Get started for free — no credit card needed.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
