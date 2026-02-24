@@ -1,143 +1,143 @@
 import {
-  Lock, Wifi, Puzzle, Zap, BarChart3,
+  Lock, Wifi, Puzzle, Zap, BarChart3, Cpu,
   RefreshCw, ShieldCheck, LayoutDashboard, MonitorSmartphone,
   PackageCheck, Users, Shield, EyeOff,
 } from 'lucide-react'
 
 const FEATURE_GROUPS = [
   {
-    group: '🤖 Real AI Assistant',
-    subtitle: 'The agent lives on your machine. No extra cloud server between you and your AI provider.',
+    group: '⚙️ Runtime & orchestration',
+    subtitle: 'Layered architecture compiles a deterministic DAG executed across agents.',
     items: [
       {
-        icon: MonitorSmartphone,
-        title: 'Agent on Your Machine',
-        description: 'The AI SuperApp agent runs on your own desktop. Tool execution, file access, and mini-app orchestration all happen on your machine — not a remote cloud VM.',
+        icon: Puzzle,
+        title: 'Deterministic planner',
+        description: 'Core layer turns agent definitions into a fixed, replayable DAG; execution order never varies.',
         color: 'text-indigo-400',
         bg: 'bg-indigo-400/10 border-indigo-400/20',
       },
       {
-        icon: Zap,
-        title: 'Zero Extra Cloud Layer',
-        description: 'The agent and mini-apps run directly on your machine. Calls go straight to your AI provider — no middleware server reading or buffering your requests.',
+        icon: Users,
+        title: 'Agent delegation',
+        description: 'Agents invoke others using a protocol that propagates or restricts capabilities with call‑depth limits.',
+        color: 'text-purple-400',
+        bg: 'bg-purple-400/10 border-purple-400/20',
+      },
+      {
+        icon: BarChart3,
+        title: 'Token & budget tracking',
+        description: 'Prompt/completion tokens logged per agent and aggregated; budgets enforced at runtime.',
         color: 'text-yellow-400',
         bg: 'bg-yellow-400/10 border-yellow-400/20',
       },
       {
         icon: Lock,
-        title: 'Full Privacy',
-        description: 'Your prompts and outputs are never stored by us. The Desktop Agent on your machine talks directly to your AI provider — the platform only manages devices and task queue.',
+        title: 'Capability checks',
+        description: 'Every tool call, memory access and cross‑agent message is verified against grants.',
         color: 'text-green-400',
         bg: 'bg-green-400/10 border-green-400/20',
       },
-      {
-        icon: Zap,
-        title: 'Real-Time Streaming',
-        description: 'Token-by-token streaming from your desktop to any browser. Feels instant, works anywhere.',
-        color: 'text-pink-400',
-        bg: 'bg-pink-400/10 border-pink-400/20',
-      },
     ],
   },
   {
-    group: '🧩 Mini-App Ecosystem',
-    subtitle: 'Install, run, and build AI tools in one place.',
+    group: '💻 Local & host environments',
+    subtitle: 'Runtime packages for desktop with a read‑only web UI.',
     items: [
       {
-        icon: Puzzle,
-        title: 'Growing Marketplace',
-        description: 'Browse 20+ community-built Mini-Apps across writing, coding, finance, and automation. New apps ship every week.',
-        color: 'text-purple-400',
-        bg: 'bg-purple-400/10 border-purple-400/20',
-      },
-      {
-        icon: PackageCheck,
-        title: 'One-Click Install',
-        description: 'Install any Mini-App with a single click. Permissions are reviewed up front — no surprises, no hidden access.',
-        color: 'text-cyan-400',
-        bg: 'bg-cyan-400/10 border-cyan-400/20',
-      },
-      {
-        icon: ShieldCheck,
-        title: 'Permission Engine',
-        description: 'Every Mini-App declares what it needs — file system, clipboard, network. You grant or deny each permission explicitly.',
-        color: 'text-rose-400',
-        bg: 'bg-rose-400/10 border-rose-400/20',
-      },
-      {
-        icon: Users,
-        title: 'Open SDK',
-        description: 'Build and publish your own Mini-Apps with our TypeScript SDK. Developers earn 70% of every sale.',
-        color: 'text-orange-400',
-        bg: 'bg-orange-400/10 border-orange-400/20',
-      },
-    ],
-  },
-  {
-    group: '📊 Easy Management',
-    subtitle: 'One dashboard to control everything.',
-    items: [
-      {
-        icon: LayoutDashboard,
-        title: 'Unified Dashboard',
-        description: 'See all your Mini-Apps, devices, workspaces, and run history in one place — clean, fast, no clutter.',
+        icon: Cpu,
+        title: 'Desktop runtime',
+        description: 'Agent execution and provider calls happen on your machine; no third‑party cloud layer.',
         color: 'text-blue-400',
         bg: 'bg-blue-400/10 border-blue-400/20',
       },
       {
-        icon: BarChart3,
-        title: 'Usage Analytics',
-        description: 'Track run counts and Mini-App performance across all workspaces. Spot trends before they become problems.',
-        color: 'text-teal-400',
-        bg: 'bg-teal-400/10 border-teal-400/20',
-      },
-      {
         icon: Wifi,
-        title: 'Multi-Device',
-        description: 'Register multiple desktop agents and switch between them from the web. Your AI follows you everywhere.',
+        title: 'Web dashboard only UI',
+        description: 'Browser is a remote control that streams state; it does not execute agents.',
         color: 'text-sky-400',
         bg: 'bg-sky-400/10 border-sky-400/20',
       },
       {
+        icon: MonitorSmartphone,
+        title: 'Environment support',
+        description: 'Core, execution and adapters run in Node or Tauri; snapshots replay in browser.',
+        color: 'text-indigo-400',
+        bg: 'bg-indigo-400/10 border-indigo-400/20',
+      },
+      {
+        icon: Lock,
+        title: 'Open source',
+        description: 'Source for core packages is available on GitHub under MIT.',
+        color: 'text-gray-400',
+        bg: 'bg-gray-400/10 border-gray-400/20',
+      },
+    ],
+  },
+  {
+    group: '🛡 Security & Policies',
+    subtitle: 'Built‑in enforcement at runtime.',
+    items: [
+      {
+        icon: ShieldCheck,
+        title: 'Sandboxed modules',
+        description: 'Agents and skills execute in a sandbox with explicit permissions.',
+        color: 'text-rose-400',
+        bg: 'bg-rose-400/10 border-rose-400/20',
+      },
+      {
+        icon: EyeOff,
+        title: 'Memory scope controls',
+        description: 'Each agent only sees the memory it is granted.',
+        color: 'text-pink-400',
+        bg: 'bg-pink-400/10 border-pink-400/20',
+      },
+      {
+        icon: PackageCheck,
+        title: 'Policy engine',
+        description: 'Budget and access policies evaluated before execution.',
+        color: 'text-teal-400',
+        bg: 'bg-teal-400/10 border-teal-400/20',
+      },
+      {
         icon: RefreshCw,
-        title: 'Auto Reconnect',
-        description: 'The agent maintains a self-healing background connection. No babysitting — it just stays online.',
+        title: 'Snapshot & replay',
+        description: 'Every run can be saved and deterministically replayed for debugging.',
         color: 'text-lime-400',
         bg: 'bg-lime-400/10 border-lime-400/20',
       },
     ],
   },
   {
-    group: '🔒 Security',
-    subtitle: 'Private by design. Secure at every layer.',
+    group: '📦 Extensibility',
+    subtitle: 'Open SDK and marketplace.',
     items: [
       {
-        icon: Lock,
-        title: 'No Data Storage',
-        description: 'We never store your prompts or AI outputs. Your data goes directly from your machine to your AI provider — the platform stores only device registrations, bot metadata, and run status.',
-        color: 'text-green-400',
-        bg: 'bg-green-400/10 border-green-400/20',
+        icon: Zap,
+        title: 'TypeScript SDK',
+        description: 'Define agents, tools and providers programmatically.',
+        color: 'text-orange-400',
+        bg: 'bg-orange-400/10 border-orange-400/20',
       },
       {
-        icon: ShieldCheck,
-        title: 'Sandboxed Mini-Apps',
-        description: 'Every Mini-App runs in a sandboxed environment. It declares its required permissions upfront — you grant or deny each one explicitly.',
-        color: 'text-rose-400',
-        bg: 'bg-rose-400/10 border-rose-400/20',
+        icon: PackageCheck,
+        title: 'Plugin architecture',
+        description: 'Custom providers, tools, memory backends and UI components.',
+        color: 'text-yellow-400',
+        bg: 'bg-yellow-400/10 border-yellow-400/20',
       },
       {
-        icon: EyeOff,
-        title: 'End-to-End Encrypted',
-        description: 'All traffic between your Desktop Agent and the management backend is TLS-encrypted. The backend never sees your AI prompts, outputs, or API keys.',
+        icon: Users,
+        title: 'Marketplace',
+        description: 'Browse and install community agents with a click.',
         color: 'text-purple-400',
         bg: 'bg-purple-400/10 border-purple-400/20',
       },
       {
-        icon: Shield,
-        title: 'Open Source Agent',
-        description: 'The desktop agent is fully open source. Inspect every line, build it yourself, and trust what runs on your machine.',
-        color: 'text-amber-400',
-        bg: 'bg-amber-400/10 border-amber-400/20',
+        icon: Lock,
+        title: 'Open platform',
+        description: 'Source for core packages available on GitHub.',
+        color: 'text-green-400',
+        bg: 'bg-green-400/10 border-green-400/20',
       },
     ],
   },
@@ -154,11 +154,12 @@ export default function Features() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Features</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Real assistant. Powerful ecosystem.<br />
-            <span className="gradient-text">Easy management. Secure.</span>
+            Core runtime features, security, and extensibility.<br />
+            <span className="gradient-text">Designed for local control.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Four pillars that make AI SuperApp unlike anything else.
+            A layered, capability‑checked system with deterministic execution and
+            an open SDK.
           </p>
         </div>
 

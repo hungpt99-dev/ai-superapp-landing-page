@@ -1,18 +1,19 @@
-import { ArrowRight, Shield, Cpu, Puzzle, LayoutDashboard, Zap } from 'lucide-react'
+import { ArrowRight, Shield, Cpu, Puzzle, BarChart3, Lock } from 'lucide-react'
 
 const BADGES = [
-  { icon: Cpu,             label: 'Real AI assistant'             },
-  { icon: Puzzle,          label: '20+ Mini-Apps & growing'       },
-  { icon: LayoutDashboard, label: 'One dashboard, everything'     },
-  { icon: Shield,          label: 'Secure & private by design'    },
-  { icon: Zap,             label: 'No extra cloud layer'          },
+  { icon: Puzzle,          label: 'Multi‑agent orchestration'      },
+  { icon: BarChart3,       label: 'Deterministic planner'          },
+  { icon: Shield,          label: 'Capability enforcement'         },
+  { icon: BarChart3,       label: 'Token & cost tracking'         },
+  { icon: Cpu,             label: 'Local execution'                },
+  { icon: Lock,            label: 'Open‑source runtime'            },
 ]
 
 const STATS = [
-  { value: '20+',     label: 'Mini-Apps'      },
-  { value: '1',       label: 'Dashboard'      },
-  { value: '100%',    label: 'Private'        },
-  { value: '1-click', label: 'Setup'          },
+  { value: 'Deterministic', label: 'Reproducible runs' },
+  { value: 'Permissioned',  label: 'Capability‑checked' },
+  { value: 'On‑device',     label: 'Local execution'     },
+  { value: 'Extensible',    label: 'Open SDK'            },
 ]
 
 export default function Hero() {
@@ -33,21 +34,13 @@ export default function Hero() {
         />
       </div>
 
-      {/* Eyebrow */}
-      <div className="relative animate-fade-in mb-6">
-        <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full text-xs font-semibold bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 tracking-wide uppercase">
-          <span className="w-1.5 h-1.5 rounded-full bg-indigo-400 animate-pulse-slow" />
-          Now in Beta — Join the waitlist
-        </span>
-      </div>
-
       {/* Headline */}
       <h1
         className="relative max-w-5xl text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight animate-fade-up"
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
-        AgentHub — the operating system<br />
-        for trustworthy AI agents.
+        Complete complex work<br />
+        with one prompt.
       </h1>
 
       {/* Sub */}
@@ -55,8 +48,11 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        Deterministic, permissioned agent runtime with memory, tools, and a
-        marketplace — deploy agents as trusted digital employees on desktop or web.
+        A desktop runtime that validates agent definitions, compiles a deterministic,
+        multi‑agent DAG, and executes it on‑device. Every tool call, provider request,
+        memory access and cross‑agent message is checked against declared
+        capabilities; token usage and budgets are tracked per agent. Executions can
+        be snapshotted and replayed, and results stream back to the web UI.
       </p>
 
       {/* CTAs */}

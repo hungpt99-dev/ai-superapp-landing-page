@@ -8,7 +8,7 @@ const PLANS = [
     description: 'Perfect for personal exploration and getting started.',
     features: [
       '1 device connected',
-      '3 Mini-Apps',
+      '3 agents',
       '100 AI runs / month',
       'Community support',
       'Open-source desktop client',
@@ -24,7 +24,7 @@ const PLANS = [
     description: 'For power users who want remote access and full automation.',
     features: [
       'Unlimited devices',
-      'All Mini-Apps',
+      'All agents',
       'Unlimited AI runs',
       'Remote access from any browser',
       'Usage analytics dashboard',

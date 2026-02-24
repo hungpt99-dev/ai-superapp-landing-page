@@ -73,8 +73,7 @@ export default function SDKPage() {
           Agent SDK
         </h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          The TypeScript SDK for building and publishing agents on the AgentHub platform.
-          Every agent is a module declared with <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">defineModule</code>.
+          The TypeScript SDK for building and publishing agents on the AgentHub platform. Agents run in a sandboxed, capability‑checked runtime that compiles a deterministic execution graph. The SDK also exposes plugin hooks for custom tools, AI providers, and memory backends. Every agent is a module declared with <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">defineModule</code>.
         </p>
       </div>
 
@@ -104,7 +103,7 @@ export default function SDKPage() {
           Never export raw objects or use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">module.exports</code>.
         </p>
 
-        <CodeBlock code={`import { defineModule, Permission } from '@ai-superapp/sdk'
+        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'
 
 export default defineModule({
   manifest: {
@@ -213,7 +212,7 @@ export default defineModule({
           Tools are how your Mini-App exposes actions to the AI. Each tool has a name, description,
           optional JSON Schema for inputs, and a <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">run</code> function.
         </p>
-        <CodeBlock code={`import type { ITool, IModuleContext } from '@ai-superapp/sdk'
+        <CodeBlock code={`import type { ITool, IModuleContext } from '@agenthub/sdk'
 
 const writeBlogPost: ITool = {
   name: 'write_blog_post',
@@ -469,8 +468,8 @@ const stats = await ctx.memory.stats()
         <p className="text-gray-400 text-sm leading-relaxed mb-5">
           A full writing assistant that uses AI generation, local storage, memory, and notifications:
         </p>
-        <CodeBlock code={`import { defineModule, Permission } from '@ai-superapp/sdk'
-import type { ITool, IModuleContext } from '@ai-superapp/sdk'
+        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'
+import type { ITool, IModuleContext } from '@agenthub/sdk'
 
 const generatePost: ITool = {
   name: 'generate_post',

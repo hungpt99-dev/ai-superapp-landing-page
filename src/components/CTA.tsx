@@ -16,12 +16,12 @@ export default function CTA() {
               <Zap size={24} className="text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-              Your real AI assistant.<br />
-              <span className="gradient-text">Powerful. Managed. Secure.</span>
+              A runtime you control.<br />
+              <span className="gradient-text">Execute multi‑agent workflows.</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10">
-              20+ agents. One dashboard. Security built in.<br />
-              Get started for free — no credit card needed.
+              Runs on your desktop. Full visibility, permissions, and replay.
+              Start for free with no credit card.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a

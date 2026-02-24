@@ -3,28 +3,26 @@ const STEPS = [
     step: '01',
     title: 'Install the Desktop Agent',
     description:
-      'Download the lightweight AgentHub desktop client for macOS, Windows, or Linux. One-click install, auto-configured.',
+      'One-click macOS/Windows/Linux package. The runtime lives on your machine and exposes a WebSocket bridge.',
     color: 'from-blue-500 to-indigo-500',
   },
   {
     step: '02',
-    title: 'Configure Your AI Model',
-    description:
-      'Choose your AI provider — OpenAI, Anthropic, Gemini, or Mistral. Everything is configured locally on your machine in seconds.',
+    title: 'Define agents and permissions',
+    description: `Use the dashboard or TypeScript SDK to author agents with tools, memory scopes, model settings and required capability grants.`,
     color: 'from-indigo-500 to-purple-500',
   },
   {
     step: '03',
-    title: 'Open the Web App',
+    title: 'Send a prompt from the web',
     description:
-      'Log in from any browser, anywhere. Your Desktop Agent connects via our secure relay — no port forwarding needed.',
+      'The browser is a remote UI; input is relayed securely to the desktop agent for execution. No AI work happens in the cloud.',
     color: 'from-purple-500 to-pink-500',
   },
   {
     step: '04',
-    title: 'Run Your Agents',
-    description:
-      'Launch AI-powered agents from the web. Your desktop executes everything — AI calls, file access, tool use — and streams results back.',
+    title: 'Runtime plans and executes',
+    description: `Core validates definitions, compiles a deterministic DAG spanning multiple agents, then the execution engine schedules nodes on a worker pool, enforces capability grants, token budgets and call‑depth limits, and streams outputs incrementally. Runs can be snapshotted for deterministic replay.`,
     color: 'from-pink-500 to-rose-500',
   },
 ]
@@ -44,7 +42,7 @@ export default function HowItWorks() {
             Up and running in <span className="gradient-text">4 steps</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            No server config, no DevOps. Install, configure your model, and your real AI assistant is ready.
+            No server config, no DevOps. Install, configure your model, and the local runtime is ready.
           </p>
         </div>
 
@@ -74,10 +72,10 @@ export default function HowItWorks() {
           <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-6">Execution flow example</p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-center">
             {[
-              { label: 'You type a prompt',        note: 'in the web app',               emoji: '✍️' },
-              { label: 'Relay forwards it',         note: 'encrypted, no content stored', emoji: '🔒' },
-              { label: 'Desktop runs the logic',    note: 'calls your AI provider',       emoji: '⚡' },
-              { label: 'Result streams back',       note: 'token by token in your browser', emoji: '📡' },
+              { label: 'Prompt sent',               note: 'web UI -> desktop agent',         emoji: '✉️' },
+          { label: 'Runtime validates & plans', note: 'deterministic graph of agents computed',        emoji: '🧠' },
+          { label: 'Nodes execute locally',     note: 'capabilities checked, tokens counted', emoji: '⚙️' },
+          { label: 'Output streams back',       note: 'live tokens to browser',          emoji: '📡' },
             ].map((item, i, arr) => (
               <div key={item.label} className="flex items-center gap-3 flex-1">
                 <div className="flex-1 flex flex-col items-center gap-1">

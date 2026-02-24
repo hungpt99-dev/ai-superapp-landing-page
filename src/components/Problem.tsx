@@ -3,21 +3,21 @@ import { MessageSquare, Cloud, Monitor, X, Check } from 'lucide-react'
 const PROBLEMS = [
   {
     icon: MessageSquare,
-    title: 'Messaging Bot Platforms',
-    examples: 'Telegram bots, Zalo bots',
-    pains: ['Limited UI & workflows', 'Platform dependency', 'No advanced automation'],
+    title: 'Chatbots as single AI calls',
+    examples: 'GPT‑style chat UIs',
+    pains: ['One prompt = one model call', 'No coordination between services', 'Output hard to reproduce'],
   },
   {
     icon: Cloud,
-    title: 'AI SaaS Platforms',
-    examples: 'ChatGPT, Claude, Jasper',
-    pains: ['Extra cloud layer in the middle', 'Your data stored by the SaaS', 'No customization'],
+    title: 'Cloud AI platforms',
+    examples: 'ChatGPT, Jasper, Anthropic SaaS',
+    pains: ['Requests proxied through another cloud', 'Provider keys and data leave your control', 'Limited ability to extend logic'],
   },
   {
     icon: Monitor,
-    title: 'Pure Desktop Apps',
-    examples: 'LM Studio, local Ollama',
-    pains: ['Not accessible remotely', 'No centralized UI', 'No ecosystem'],
+    title: 'Standalone local tools',
+    examples: 'LLM studio, offline assistants',
+    pains: ['Isolated on one machine', 'No remote monitoring', 'No agent ecosystem'],
   },
 ]
 
@@ -32,7 +32,7 @@ export default function Problem() {
             Nobody has built a <span className="gradient-text">real AI assistant</span> yet.
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Existing tools are chatbots or cloud SaaS — not a real assistant that runs on your machine and grows with agents.
+            Existing tools are chatbots or cloud SaaS — they make a single model call and execute in someone else’s cloud.
           </p>
         </div>
 
@@ -63,14 +63,14 @@ export default function Problem() {
         <div className="glass rounded-2xl p-8 glow text-center">
           <p className="text-sm text-indigo-400 font-semibold uppercase tracking-widest mb-3">The Solution</p>
           <h3 className="text-2xl md:text-3xl font-extrabold text-white mb-6">
-            AgentHub is your <span className="gradient-text">real AI assistant</span>. Finally.
+            AgentHub is a local multi‑agent runtime that runs on your machine.
           </h3>
           <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-4">
             {[
-              'A real AI assistant, not a chatbot',
-              'Powerful agent ecosystem — 20+ agents',
-              'One dashboard, easy to manage',
-              'Secure & private by design',
+              'Multi‑agent orchestration — not a single call or prompt playground',
+              'Execution happens on your desktop',
+              'Capabilities and budgets enforced',
+              'Deterministic graphs that replay',
             ].map(item => (
               <div key={item} className="flex items-start gap-2 text-sm text-left text-gray-300 bg-white/5 rounded-xl px-4 py-3">
                 <Check size={15} className="text-indigo-400 mt-0.5 shrink-0" />

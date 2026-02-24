@@ -11,7 +11,7 @@ const STEPS = [
     desc: 'Download and install the AgentHub Desktop Agent for your OS. The agent runs as a background process and registers itself with the backend.',
     code: `# macOS — download from the releases page
 # Or build from source:
-git clone https://github.com/nextlevelbuilder/ai-super-app-desktop
+git clone https://github.com/agenthub/ai-super-app-desktop
 cd ai-super-app-desktop/apps/desktop
 npm install && npm run dev`,
     note: 'The desktop client is fully open source. You can inspect and build it yourself.',
@@ -63,7 +63,7 @@ curl -X POST https://api.agenthub.com/v1/marketplace/seo-writer/install \\
     bg: 'bg-green-400/10 border-green-400/20',
     step: '05',
     title: 'Run it from the Dashboard',
-    desc: 'Navigate to Bots → New Bot, set a goal, and click Run. The backend queues the task, your Desktop Agent picks it up (usually within seconds), executes it locally, and posts the result back.',
+    desc: 'Navigate to Bots → New Bot, set a goal, and click Run. The backend queues the task; your Desktop Agent polls for pending runs, executes the agent graph locally, and streams progress and the final result back via the agent protocol endpoints.',
     code: `# Queue a bot run:
 curl -X POST https://api.agenthub.com/v1/bots/{botId}/runs \\
   -H "Authorization: Bearer <your-jwt>" \\

@@ -177,9 +177,7 @@ curl -X POST https://api.agenthub.com/v1/devices/{deviceId}/heartbeat \\
           <h2 className="text-xl font-bold text-white">Bots & Runs</h2>
         </div>
         <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          Bots are named automated tasks. Queuing a run creates a <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">pending</code> record that
-          the Desktop Agent claims via <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">GET /v1/bots/poll</code> (uses SELECT … FOR UPDATE SKIP LOCKED
-          for safe concurrent polling).
+          Bots are named automated tasks. Queuing a run creates a <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">pending</code> record that the Desktop Agent claims via <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">GET /v1/agents/poll</code> (uses SELECT … FOR UPDATE SKIP LOCKED for safe concurrent polling). These agent‑protocol endpoints (`/v1/agents/*`) are used by the desktop client; they are authenticated with the same JWT and are not intended for manual use.
         </p>
 
         {/* Run state diagram */}
@@ -211,7 +209,7 @@ curl -X POST https://api.agenthub.com/v1/bots/{botId}/runs \\
   -d '{"goal":"Write a 500-word post about TypeScript generics"}'
 
 # Desktop Agent: claim next pending run (SKIP LOCKED)
-curl https://api.agenthub.com/v1/bots/poll \\
+curl https://api.agenthub.com/v1/agents/poll \\
   -H "Authorization: Bearer <jwt>"
 
 # Desktop Agent: report progress / completion
@@ -228,8 +226,8 @@ curl -X PATCH https://api.agenthub.com/v1/bots/runs/{runId} \\
           { method: 'DELETE',path: '/v1/bots/{botId}',            auth: true, desc: 'Delete a bot.' },
           { method: 'POST',  path: '/v1/bots/{botId}/runs',       auth: true, desc: 'Queue a new bot run (creates pending run).' },
           { method: 'GET',   path: '/v1/bots/{botId}/runs',       auth: true, desc: 'List all runs for a bot.' },
-          { method: 'GET',   path: '/v1/bots/poll',               auth: true, desc: 'Desktop Agent: claim the next pending run (SKIP LOCKED).' },
-          { method: 'PATCH', path: '/v1/bots/runs/{runId}',       auth: true, desc: 'Desktop Agent: update run status / post result.' },
+          { method: 'GET',   path: '/v1/agents/poll',             auth: true, desc: 'Desktop Agent: claim the next pending run (SKIP LOCKED).' },
+          { method: 'PATCH', path: '/v1/agents/runs/{runId}',     auth: true, desc: 'Desktop Agent: update run status / post result.' },
         ]} />
       </section>
 

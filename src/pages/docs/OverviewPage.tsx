@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ArrowRight, Monitor, Globe, Server, Puzzle, Shield, Bot } from 'lucide-react'
+import { ArrowRight, Monitor, Globe, Server, Puzzle, Shield, Bot, Package } from 'lucide-react'
 
 export default function OverviewPage() {
   return (
@@ -68,6 +68,22 @@ export default function OverviewPage() {
           ))}
         </div>
 
+        <p className="text-gray-400 mb-6 leading-relaxed">
+          The desktop agent contains the runtime: core logic, orchestrator and
+          execution engine compiled as a deterministic DAG. When a bot run
+          arrives the runtime validates agent definitions, resolves inter‑agent
+          calls into a fixed graph, and schedules nodes on a worker pool. Every
+          operation – tool call, LLM request, memory read/write, or cross‑agent
+          message – is gated by its declared capabilities. Tokens and estimated
+          cost are logged per agent and budget limits are enforced on the fly.
+          Runs may be snapshotted and later replayed deterministically for
+          debugging.
+        </p>
+        <p className="text-gray-400 mb-6 leading-relaxed">
+          The same core packages execute in Node.js or Tauri, and snapshots can be
+          replayed in any browser; the web dashboard itself never runs agents.
+        </p>
+
         {/* Flow diagram */}
         <div className="glass rounded-xl p-6 font-mono text-sm">
           <p className="text-gray-500 mb-4 font-sans text-xs uppercase tracking-widest">Request flow</p>
@@ -85,7 +101,7 @@ export default function OverviewPage() {
             <div className="flex items-center gap-3">
               <span className="text-indigo-400 font-semibold">Desktop Agent</span>
               <span className="text-gray-600">──────►</span>
-              <span className="text-purple-400 font-semibold">GET /v1/bots/poll</span>
+              <span className="text-purple-400 font-semibold">GET /v1/agents/poll</span>
               <span className="text-gray-600">──────►</span>
               <span className="text-cyan-400">Claims pending run</span>
             </div>
@@ -122,7 +138,7 @@ export default function OverviewPage() {
               icon: Puzzle,
               color: 'text-purple-400',
               title: 'Agents',
-              desc: 'Self-contained AI tools built with the TypeScript SDK. Each agent declares its required permissions upfront. Users install them from the marketplace with one click. Developers earn 70% of every sale.',
+              desc: 'Self-contained AI tools built with the TypeScript SDK. Each agent declares its required capabilities upfront. Users install them from the marketplace with one click. Developers earn 70% of every sale.',
             },
             {
               icon: Bot,
@@ -133,8 +149,8 @@ export default function OverviewPage() {
             {
               icon: Shield,
               color: 'text-green-400',
-              title: 'Permissions',
-              desc: 'Every Mini-App requests specific capabilities (ai.generate, storage.read, computer.files, etc.). The permission engine enforces these at runtime — a Mini-App cannot access anything it has not declared.',
+              title: 'Capabilities',
+              desc: 'Every agent lists the capabilities it needs (ai.generate, storage.read, computer.files, etc.). The runtime verifies grants before tool calls, provider calls, memory access and cross-agent messages.',
             },
             {
               icon: Globe,
@@ -148,6 +164,13 @@ export default function OverviewPage() {
               title: 'Devices',
               desc: 'Each installation of the Desktop Agent is a registered device. You can have multiple devices (laptop, desktop, home server) connected to the same account and see which ones are online from the Dashboard.',
             },
+            {
+              icon: Package,
+              color: 'text-yellow-400',
+              title: 'Extensibility',
+              desc: 'The SDK and plugin system let you add custom providers, tools, memory backends, and UI components. Agents and modules execute in isolated sandboxes with explicit permissions.',
+            },
+
           ].map(({ icon: Icon, color, title, desc }) => (
             <div key={title} className="glass rounded-xl p-5 flex gap-4">
               <div className="shrink-0 mt-0.5">
