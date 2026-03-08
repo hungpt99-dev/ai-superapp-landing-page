@@ -1,12 +1,12 @@
-import { Zap, Github, Twitter } from 'lucide-react'
+import { Activity, Github, Twitter } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 const LINKS: Record<string, Array<{ label: string; to: string; external?: boolean }>> = {
   Product: [
-    { label: 'Features',  to: '/#features' },
-    { label: 'Agents',    to: '/#agents' },
-    { label: 'Pricing',   to: '/#pricing'  },
-    { label: 'Changelog', to: '#'          },
+    { label: 'Features',      to: '/#features'     },
+    { label: 'Integrations',  to: '/#integrations' },
+    { label: 'Pricing',       to: '/#pricing'      },
+    { label: 'Changelog',     to: '#'              },
   ],
   Developers: [
     { label: 'SDK Docs',       to: '/docs/sdk'       },
@@ -15,10 +15,10 @@ const LINKS: Record<string, Array<{ label: string; to: string; external?: boolea
     { label: 'GitHub',         to: 'https://github.com/nextlevelbuilder', external: true },
   ],
   Company: [
-    { label: 'About',           to: '#' },
-    { label: 'Blog',            to: '#' },
-    { label: 'Privacy Policy',  to: '#' },
-    { label: 'Terms of Service',to: '#' },
+    { label: 'About',            to: '#' },
+    { label: 'Blog',             to: '#' },
+    { label: 'Privacy Policy',   to: '#' },
+    { label: 'Terms of Service', to: '#' },
   ],
 }
 
@@ -31,14 +31,14 @@ export default function Footer() {
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
-                <Zap size={16} className="text-white" />
+                <Activity size={16} className="text-white" />
               </span>
               <span className="font-bold text-lg tracking-tight">
                 Agent<span className="gradient-text">Hub</span>
               </span>
             </div>
             <p className="text-gray-500 text-sm leading-relaxed mb-5">
-              Your real AI assistant. Private, fast, and powerful.
+              The control plane for AI agents in production. Monitor, debug, and optimize your agents at scale.
             </p>
             <div className="flex items-center gap-3">
               <a href="#" className="w-9 h-9 glass rounded-lg flex items-center justify-center text-gray-400 hover:text-white transition-colors">
@@ -81,7 +81,7 @@ export default function Footer() {
         <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-gray-600 text-sm">© 2026 AgentHub. All rights reserved.</p>
           <p className="text-gray-700 text-xs">
-            Built with ❤️ — open source desktop, private by design
+            Built for AI teams — from observability to full lifecycle management
           </p>
         </div>
       </div>

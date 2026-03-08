@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
-import { Zap, Menu, X } from 'lucide-react'
+import { Activity, Menu, X } from 'lucide-react'
 
 const NAV_LINKS = [
   { label: 'How it works', href: '#how-it-works' },
   { label: 'Features',     href: '#features'     },
-  { label: 'Agents',       href: '#agents'       },
+  { label: 'Integrations', href: '#integrations' },
+  { label: 'Deployment',   href: '#deployment'   },
   { label: 'Pricing',      href: '#pricing'      },
 ]
 
@@ -29,7 +30,7 @@ export default function Navbar() {
         {/* Logo */}
         <a href="#" className="flex items-center gap-2 group">
           <span className="w-8 h-8 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg group-hover:shadow-indigo-500/50 transition-shadow">
-            <Zap size={16} className="text-white" />
+            <Activity size={16} className="text-white" />
           </span>
           <span className="font-bold text-lg tracking-tight">
             Agent<span className="gradient-text">Hub</span>

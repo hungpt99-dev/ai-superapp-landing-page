@@ -2,33 +2,36 @@ import { Check, Zap } from 'lucide-react'
 
 const PLANS = [
   {
-    name: 'Free',
-    price: '$0',
-    period: 'forever',
-    description: 'Perfect for personal exploration and getting started.',
+    name: 'Starter',
+    price: '$29',
+    period: 'per month',
+    description: 'For individual developers and small teams getting started with agent observability.',
     features: [
-      '1 device connected',
-      '3 agents',
-      '100 AI runs / month',
+      'Up to 3 agents',
+      '10,000 events / month',
+      'Real-time monitoring dashboard',
+      'Run history (7 days)',
+      'Basic cost tracking',
       'Community support',
-      'Open-source desktop client',
     ],
-    cta: 'Get started',
+    cta: 'Start free trial',
     ctaStyle: 'glass hover:bg-white/10 text-gray-200',
     highlight: false,
   },
   {
-    name: 'Pro',
-    price: '$12',
+    name: 'Team',
+    price: '$99',
     period: 'per month',
-    description: 'For power users who want remote access and full automation.',
+    description: 'For growing teams that need full observability, debugging tools, and workflow visualization.',
     features: [
-      'Unlimited devices',
-      'All agents',
-      'Unlimited AI runs',
-      'Remote access from any browser',
-      'Usage analytics dashboard',
-      'Scheduling & automation',
+      'Up to 20 agents',
+      '100,000 events / month',
+      'Full monitoring dashboard',
+      'Workflow visualization (DAG)',
+      'Run inspector & step-by-step trace',
+      'Deterministic run replay',
+      'LLM cost tracking & alerts',
+      'Run history (30 days)',
       'Priority support',
     ],
     cta: 'Start free trial',
@@ -39,14 +42,16 @@ const PLANS = [
     name: 'Enterprise',
     price: 'Custom',
     period: 'contact us',
-    description: 'For teams and organisations with advanced requirements.',
+    description: 'For organisations with compliance requirements, high volume, or on-premise needs.',
     features: [
-      'Everything in Pro',
-      'Private relay server',
-      'On-prem deployment option',
+      'Unlimited agents',
+      'Unlimited events',
+      'Everything in Team',
+      'On-premise deployment',
       'SSO / SAML integration',
-      'Team workspaces',
-      'SLA & dedicated support',
+      'Custom data retention',
+      'Dedicated Slack support',
+      'SLA guarantee',
     ],
     cta: 'Contact sales',
     ctaStyle: 'glass hover:bg-white/10 text-gray-200',
@@ -69,7 +74,7 @@ export default function Pricing() {
             <span className="gradient-text">no surprises.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            Pay only for platform access. Use any AI provider you already subscribe to.
+            Start for free. Scale as your agent fleet grows. No per-seat fees.
           </p>
         </div>
 

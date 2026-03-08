@@ -1,4 +1,4 @@
-import { Terminal, Package, Shield, Cpu, Database, Bell, Radio, Monitor, Brain } from 'lucide-react'
+import { Terminal, Package, Shield, Activity, Database, Radio, Brain } from 'lucide-react'
 
 function CodeBlock({ lang = 'typescript', code }: { lang?: string; code: string }) {
   return (
@@ -66,130 +66,125 @@ export default function SDKPage() {
     <div>
       {/* Header */}
       <div className="mb-10">
-        <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">
-          SDK Reference
-        </p>
-        <h1 className="text-4xl font-extrabold text-white mb-4 tracking-tight">
-          Agent SDK
-        </h1>
+        <p className="text-xs font-semibold text-indigo-400 uppercase tracking-widest mb-2">SDK Reference</p>
+        <h1 className="text-4xl font-extrabold text-white mb-4 tracking-tight">AgentHub SDK</h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          The TypeScript SDK for building and publishing agents on the AgentHub platform. Agents run in a sandboxed, capability‑checked runtime that compiles a deterministic execution graph. The SDK also exposes plugin hooks for custom tools, AI providers, and memory backends. Every agent is a module declared with <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">defineModule</code>.
+          The official TypeScript and Python SDK for instrumenting your AI agents.
+          Initialise <code className="text-indigo-300 bg-indigo-900/30 px-1.5 py-0.5 rounded text-sm">AgentHubClient</code> once,
+          then register agents, ingest events, and query metrics — all from a single interface.
         </p>
       </div>
 
       {/* Installation */}
       <section className="mb-12">
-        <div className="flex items-center gap-3 mb-5">
-          <Package size={18} className="text-indigo-400" />
-          <h2 className="text-xl font-bold text-white">Installation</h2>
-        </div>
-        <CodeBlock lang="shell" code={`npm install @agenthub/sdk`} />
-        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'`} />
+        <SectionHeading
+          id="installation"
+          icon={Package}
+          color="bg-indigo-500/10 border-indigo-500/30 text-indigo-400"
+          title="Installation"
+          subtitle="Install via npm or pip."
+        />
+        <CodeBlock lang="shell" code={`# TypeScript / JavaScript
+npm install @agenthub/sdk
+
+# Python
+pip install agenthub-sdk`} />
       </section>
 
-      <hr className="border-white/10 mb-12" />
-
-      {/* defineModule */}
+      {/* Initialisation */}
       <section className="mb-12">
         <SectionHeading
-          id="define-module"
-          icon={Package}
-          color="bg-indigo-400/10 border-indigo-400/20 text-indigo-400"
-          title="defineModule"
-          subtitle="The entry point for every agent — declare your manifest, permissions, tools, and lifecycle hooks."
+          id="init"
+          icon={Shield}
+          color="bg-amber-500/10 border-amber-500/30 text-amber-400"
+          title="Initialisation"
+          subtitle="Create a client with your API key."
         />
-        <p className="text-gray-400 text-sm leading-relaxed mb-4">
-          All agents <strong className="text-gray-200">must</strong> use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">defineModule</code> as their default export.
-          Never export raw objects or use <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">module.exports</code>.
-        </p>
+        <CodeBlock lang="typescript" code={`import { AgentHubClient } from '@agenthub/sdk'
 
-        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'
-
-export default defineModule({
-  manifest: {
-    name: 'My Writing Assistant',
-    version: '1.0.0',
-    minCoreVersion: '1.0.0',
-    maxCoreVersion: '2.0.0',
-    description: 'Writes polished blog posts from a short brief.',
-    author: 'Your Name',
-    icon: '✍️',
-    category: 'writing',
-    tags: ['writing', 'blog', 'SEO'],
-  },
-  permissions: [
-    Permission.AiGenerate,
-    Permission.StorageLocal,
-    Permission.UiNotify,
-  ],
-  tools: [writeBlogPost],
-  onActivate(ctx) {
-    ctx.ui.notify({ title: 'Writing Assistant ready', body: '', level: 'success' })
-  },
-  onDeactivate(ctx) {
-    // cleanup if needed
-  },
+const hub = new AgentHubClient({
+  apiKey: process.env.AGENTHUB_API_KEY,
+  baseUrl: 'https://api.agenthub.io',  // omit for cloud default
 })`} />
-
         <PropTable rows={[
-          { name: 'manifest', type: 'IModuleManifest', required: true, desc: 'Metadata about the module — name, version, category, permissions, etc.' },
-          { name: 'permissions', type: 'Permission[]', required: true, desc: 'All permissions the module may use. Access to any permission not declared here will throw at runtime.' },
-          { name: 'tools', type: 'ITool[]', required: false, desc: 'Array of tool definitions. Tools are callable units of work the AI can invoke.' },
-          { name: 'onActivate', type: '(ctx: IModuleContext) => void | Promise<void>', required: true, desc: 'Called when the user enables the module. Set up subscriptions and initial state here.' },
-          { name: 'onDeactivate', type: '(ctx: IModuleContext) => void | Promise<void>', required: false, desc: 'Called when the user disables the module. Clean up listeners and resources here.' },
+          { name: 'apiKey', type: 'string', required: true, desc: 'Your AgentHub API key.' },
+          { name: 'baseUrl', type: 'string', desc: 'Override for self-hosted deployments.' },
+          { name: 'timeout', type: 'number', desc: 'Request timeout in ms. Default: 10000.' },
         ]} />
       </section>
 
-      <hr className="border-white/10 mb-12" />
-
-      {/* Permissions */}
-      <section className="mb-12" id="permissions">
+      {/* Agent Registry */}
+      <section className="mb-12">
         <SectionHeading
-          id="permissions"
-          icon={Shield}
-          color="bg-green-400/10 border-green-400/20 text-green-400"
-          title="Permissions"
-          subtitle="Declare every capability your module needs. Users see and approve these before install."
+          id="agents"
+          icon={Brain}
+          color="bg-purple-500/10 border-purple-500/30 text-purple-400"
+          title="Agent Registry"
+          subtitle="Register and manage agent definitions."
         />
-        <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          Permissions are enforced at the SDK proxy layer — calling an API your module hasn't declared
-          will throw a <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">PermissionDeniedError</code> at runtime, regardless of what the code tries to do.
-        </p>
+        <CodeBlock lang="typescript" code={`const agent = await hub.agents.register({
+  name: 'research-agent',
+  version: '1.0.0',
+  framework: 'langchain',   // langchain | langgraph | crewai | autogpt | custom
+  description: 'Web research and summarisation agent',
+  tags: ['research', 'production'],
+})
+
+console.log(agent.id)  // agt_01abc...
+
+// List all registered agents
+const agents = await hub.agents.list({ tag: 'production' })`} />
+        <PropTable rows={[
+          { name: 'name', type: 'string', required: true, desc: 'Unique name for the agent.' },
+          { name: 'version', type: 'string', required: true, desc: 'Semantic version string.' },
+          { name: 'framework', type: 'AgentFramework', required: true, desc: 'The AI framework the agent uses.' },
+          { name: 'description', type: 'string', desc: 'Human-readable description.' },
+          { name: 'tags', type: 'string[]', desc: 'Labels for filtering in the dashboard.' },
+        ]} />
+      </section>
+
+      {/* Event Ingestion */}
+      <section className="mb-12">
+        <SectionHeading
+          id="events"
+          icon={Radio}
+          color="bg-green-500/10 border-green-500/30 text-green-400"
+          title="Event Ingestion"
+          subtitle="Stream structured events from your running agents."
+        />
+        <CodeBlock lang="typescript" code={`await hub.events.ingest({
+  agentId: agent.id,
+  runId: 'run_xyz123',          // group events by execution run
+  type: 'llm_prompt_sent',
+  payload: {
+    model: 'gpt-4o',
+    prompt: messages,
+    temperature: 0.7,
+  },
+  timestamp: new Date().toISOString(),
+})`} />
 
         <div className="overflow-x-auto rounded-xl border border-white/10 mb-6">
           <table className="w-full text-sm">
             <thead>
               <tr className="border-b border-white/10 bg-white/[0.03]">
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Permission</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Value</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Risk</th>
-                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Grants access to</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Event Type</th>
+                <th className="text-left px-4 py-3 text-xs font-semibold text-gray-500 uppercase tracking-widest">Description</th>
               </tr>
             </thead>
             <tbody>
               {[
-                ['AiGenerate', 'ai.generate', 'Low', 'ctx.ai.generate()'],
-                ['AiStream', 'ai.stream', 'Low', 'ctx.ai.stream()'],
-                ['StorageLocal', 'storage.local', 'Low', 'ctx.storage (read + write)'],
-                ['StorageRead', 'storage.read', 'Low', 'ctx.storage.get(), keys()'],
-                ['StorageWrite', 'storage.write', 'Low', 'ctx.storage.set(), delete(), clear()'],
-                ['UiNotify', 'ui.notify', 'Low', 'ctx.ui.notify()'],
-                ['UiDashboard', 'ui.dashboard', 'Low', 'ctx.ui.showDashboard(), hideDashboard()'],
-                ['EventsPublish', 'events.publish', 'Low', 'ctx.events.publish()'],
-                ['EventsSubscribe', 'events.subscribe', 'Low', 'ctx.events.subscribe()'],
-                ['MemoryRead', 'memory.read', 'Low', 'ctx.memory.list(), get(), buildContext(), getHistory()'],
-                ['MemoryWrite', 'memory.write', 'Low', 'ctx.memory.upsert(), delete(), appendMessages(), clearSession()'],
-                ['ComputerScreenshot', 'computer.screenshot', 'Medium', 'ctx.computer.screenshot(), screenshotRegion(), screenSize()'],
-                ['ComputerInput', 'computer.input', 'Medium', 'ctx.computer.mouseMove(), keyType(), hotkey(), etc.'],
-                ['ComputerClipboard', 'computer.clipboard', 'Medium', 'ctx.computer.clipboardGet(), clipboardSet()'],
-                ['ComputerShell', 'computer.shell', 'High ⚠️', 'ctx.computer.launchApp(), runShell()'],
-                ['ComputerFiles', 'computer.files', 'High ⚠️', 'ctx.computer.readFile(), writeFile(), appendFile()'],
-              ].map(([name, value, risk, grants], i) => (
-                <tr key={name} className={`${i % 2 === 0 ? '' : 'bg-white/[0.02]'} border-b border-white/5 last:border-0`}>
-                  <td className="px-4 py-3 font-mono text-indigo-300 text-xs">{name}</td>
-                  <td className="px-4 py-3 font-mono text-purple-300 text-xs">{value}</td>
-                  <td className={`px-4 py-3 text-xs font-medium ${risk.includes('High') ? 'text-rose-400' : risk === 'Medium' ? 'text-amber-400' : 'text-green-400'}`}>{risk}</td>
-                  <td className="px-4 py-3 text-gray-400 text-xs font-mono">{grants}</td>
+                ['agent_started', 'Agent execution began'],
+                ['tool_called', 'Agent invoked a tool or function'],
+                ['llm_prompt_sent', 'Prompt dispatched to the LLM'],
+                ['llm_response_received', 'LLM response received'],
+                ['agent_completed', 'Agent run finished successfully'],
+                ['agent_failed', 'Agent run terminated with an error'],
+                ['custom', 'User-defined event — any payload schema'],
+              ].map(([type, desc], i) => (
+                <tr key={type} className={`${i % 2 === 0 ? '' : 'bg-white/[0.02]'} border-b border-white/5 last:border-0`}>
+                  <td className="px-4 py-3 font-mono text-green-300 text-xs">{type}</td>
+                  <td className="px-4 py-3 text-gray-400 text-xs">{desc}</td>
                 </tr>
               ))}
             </tbody>
@@ -197,346 +192,79 @@ export default defineModule({
         </div>
       </section>
 
-      <hr className="border-white/10 mb-12" />
-
-      {/* Tools */}
-      <section className="mb-12" id="tools">
+      {/* Workflows & Tasks */}
+      <section className="mb-12">
         <SectionHeading
-          id="tools"
-          icon={Cpu}
-          color="bg-yellow-400/10 border-yellow-400/20 text-yellow-400"
-          title="Tools"
-          subtitle="Discrete, callable units of work that the AI can invoke by name."
+          id="workflows"
+          icon={Activity}
+          color="bg-cyan-500/10 border-cyan-500/30 text-cyan-400"
+          title="Workflows & Tasks"
+          subtitle="Track multi-step agent pipelines."
         />
-        <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          Tools are how your Mini-App exposes actions to the AI. Each tool has a name, description,
-          optional JSON Schema for inputs, and a <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">run</code> function.
-        </p>
-        <CodeBlock code={`import type { ITool, IModuleContext } from '@agenthub/sdk'
-
-const writeBlogPost: ITool = {
-  name: 'write_blog_post',
-  description: 'Write a polished blog post from a topic and brief.',
-  inputSchema: {
-    type: 'object',
-    properties: {
-      topic: { type: 'string', description: 'Blog post topic' },
-      wordCount: { type: 'number', description: 'Target word count' },
-    },
-    required: ['topic'],
-  },
-  async run(input, ctx: IModuleContext) {
-    const { output } = await ctx.ai.generate({
-      capability: 'write',
-      input: \`Write a \${input.wordCount ?? 500}-word blog post about: \${input.topic}\`,
-    })
-    await ctx.storage.set('last_post', output)
-    return { content: output }
-  },
-}`} />
-        <PropTable rows={[
-          { name: 'name', type: 'string', required: true, desc: 'Unique identifier for the tool. Use snake_case.' },
-          { name: 'description', type: 'string', required: true, desc: 'Human-readable description. Used by the AI to decide when to call this tool.' },
-          { name: 'inputSchema', type: 'Record<string, unknown>', required: false, desc: 'JSON Schema object describing the expected input shape.' },
-          { name: 'run', type: '(input, ctx) => Promise<unknown>', required: true, desc: 'The tool implementation. Receives validated input and the module context.' },
-        ]} />
-      </section>
-
-      <hr className="border-white/10 mb-12" />
-
-      {/* AI Client */}
-      <section className="mb-12" id="ai-client">
-        <SectionHeading
-          id="ai-client"
-          icon={Cpu}
-          color="bg-indigo-400/10 border-indigo-400/20 text-indigo-400"
-          title="AI Client — ctx.ai"
-          subtitle="Generate text or stream tokens from your configured AI provider."
-        />
-        <p className="text-sm text-gray-400 mb-2">
-          Requires: <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.AiGenerate</code> or <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.AiStream</code>
-        </p>
-        <CodeBlock code={`// One-shot generation
-const { output, tokensUsed, model } = await ctx.ai.generate({
-  capability: 'write',    // logical capability name
-  input: 'Summarize this article: ...',
-  context: { style: 'bullet-points' },  // optional metadata
+        <CodeBlock lang="typescript" code={`// Create a workflow (a named multi-step pipeline)
+const workflow = await hub.workflows.create({
+  agentId: agent.id,
+  name: 'daily-report-pipeline',
+  description: 'Research → draft → review → send',
 })
 
-// Streaming (token-by-token)
-for await (const token of ctx.ai.stream({ capability: 'chat', input: prompt })) {
-  process.stdout.write(token)
-}`} />
-        <PropTable rows={[
-          { name: 'capability', type: 'string', required: true, desc: 'Logical capability name (e.g. "write", "chat", "summarize"). Maps to a provider model on the backend.' },
-          { name: 'input', type: 'string', required: true, desc: 'The prompt or user message to send to the AI.' },
-          { name: 'context', type: 'Record<string, unknown>', required: false, desc: 'Optional metadata passed alongside the request (style hints, domain, etc.).' },
-        ]} />
+// Log individual tasks within the workflow
+const task = await hub.tasks.create({
+  workflowId: workflow.id,
+  name: 'web-research',
+  status: 'running',
+})
+
+// Update task status when done
+await hub.tasks.update(task.id, { status: 'completed', durationMs: 1420 })`} />
       </section>
 
-      <hr className="border-white/10 mb-12" />
-
-      {/* Storage */}
-      <section className="mb-12" id="storage">
+      {/* Metrics */}
+      <section className="mb-12">
         <SectionHeading
-          id="storage"
+          id="metrics"
           icon={Database}
-          color="bg-teal-400/10 border-teal-400/20 text-teal-400"
-          title="Storage API — ctx.storage"
-          subtitle="Persistent key-value store namespaced to your module."
+          color="bg-rose-500/10 border-rose-500/30 text-rose-400"
+          title="Metrics"
+          subtitle="Query cost, latency, and error data for any agent."
         />
-        <p className="text-sm text-gray-400 mb-2">
-          Requires: <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.StorageLocal</code> (or separate Read/Write)
-        </p>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4">
-          Storage is namespaced per module — one module cannot access another module's stored data.
-          Values are serialised as JSON and stored in the local SQLite database.
-        </p>
-        <CodeBlock code={`// Write
-await ctx.storage.set('config', { theme: 'dark', locale: 'en' })
+        <CodeBlock lang="typescript" code={`const metrics = await hub.metrics.getForAgent(agent.id, {
+  from: '2026-03-01T00:00:00Z',
+  to:   '2026-03-08T00:00:00Z',
+})
 
-// Read (returns null if not found)
-const config = await ctx.storage.get<{ theme: string }>('config')
-
-// Delete a key
-await ctx.storage.delete('config')
-
-// List all keys owned by this module
-const keys = await ctx.storage.keys()  // ['config', 'last_run', ...]
-
-// Clear all data (useful on deactivate)
-await ctx.storage.clear()`} />
+console.log(metrics.totalRuns)        // 842
+console.log(metrics.avgLatencyMs)     // 1230
+console.log(metrics.totalTokens)      // 4_200_000
+console.log(metrics.estimatedCostUsd) // 12.60
+console.log(metrics.errorRate)        // 0.02`} />
       </section>
 
-      <hr className="border-white/10 mb-12" />
-
-      {/* UI */}
-      <section className="mb-12" id="ui">
+      {/* Framework Integrations */}
+      <section className="mb-12">
         <SectionHeading
-          id="ui"
-          icon={Bell}
-          color="bg-pink-400/10 border-pink-400/20 text-pink-400"
-          title="UI API — ctx.ui"
-          subtitle="Show notifications and control dashboard visibility."
+          id="integrations"
+          icon={Terminal}
+          color="bg-gray-500/10 border-gray-500/30 text-gray-400"
+          title="Framework Integrations"
+          subtitle="Drop-in wrappers for popular agent frameworks."
         />
-        <p className="text-sm text-gray-400 mb-2">
-          Requires: <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.UiNotify</code> / <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.UiDashboard</code>
-        </p>
-        <CodeBlock code={`// Show a notification
-ctx.ui.notify({
-  title: 'Blog post ready',
-  body: 'Your 500-word post on TypeScript has been generated.',
-  level: 'success',  // 'info' | 'success' | 'warning' | 'error'
+        <CodeBlock lang="typescript" code={`// LangChain — wrap an existing chain
+import { LangChainInstrumentation } from '@agenthub/sdk/langchain'
+
+const instrumented = LangChainInstrumentation.wrap(myChain, {
+  hub,
+  agentId: agent.id,
 })
 
-// Dashboard control
-ctx.ui.showDashboard()
-ctx.ui.hideDashboard()`} />
-      </section>
+// CrewAI — decorate a crew
+import { CrewAIInstrumentation } from '@agenthub/sdk/crewai'
 
-      <hr className="border-white/10 mb-12" />
+CrewAIInstrumentation.instrument(myCrew, { hub, agentId: agent.id })`} />
+        <CodeBlock lang="python" code={`# Python — LangGraph
+from agenthub.integrations.langgraph import instrument_graph
 
-      {/* Events */}
-      <section className="mb-12" id="events">
-        <SectionHeading
-          id="events"
-          icon={Radio}
-          color="bg-orange-400/10 border-orange-400/20 text-orange-400"
-          title="Event Bus — ctx.events"
-          subtitle="Publish and subscribe to platform-wide events between modules."
-        />
-        <p className="text-sm text-gray-400 mb-2">
-          Requires: <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.EventsPublish</code> / <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.EventsSubscribe</code>
-        </p>
-        <CodeBlock code={`// Publish
-ctx.events.publish('content:generated', { title: 'My Post', wordCount: 500 })
-
-// Subscribe — returns an unsubscribe function
-const unsub = ctx.events.subscribe<{ title: string }>('content:generated', (payload) => {
-  console.log('New content:', payload.title)
-})
-
-// Unsubscribe on module deactivate
-onDeactivate(ctx) {
-  unsub()
-}`} />
-      </section>
-
-      <hr className="border-white/10 mb-12" />
-
-      {/* Computer API */}
-      <section className="mb-12" id="computer">
-        <SectionHeading
-          id="computer"
-          icon={Monitor}
-          color="bg-sky-400/10 border-sky-400/20 text-sky-400"
-          title="Computer API — ctx.computer"
-          subtitle="Full OS control — screenshots, mouse, keyboard, clipboard, shell, files."
-        />
-        <div className="mb-4 bg-amber-900/20 border border-amber-500/30 rounded-xl px-5 py-4 text-sm text-amber-300">
-          ⚠️ <strong>High-risk permissions:</strong> <code className="bg-amber-900/30 px-1 py-0.5 rounded text-xs">computer.shell</code> and <code className="bg-amber-900/30 px-1 py-0.5 rounded text-xs">computer.files</code> require explicit user approval and are flagged during marketplace review. Only request what you actually need.
-        </div>
-        <CodeBlock code={`// Screenshot
-const screenshot = await ctx.computer.screenshot()
-// screenshot.dataUri  — PNG data URI
-// screenshot.width / screenshot.height
-
-// Mouse control
-await ctx.computer.mouseMove(100, 200)
-await ctx.computer.mouseClick({ x: 100, y: 200, button: 'left' })
-await ctx.computer.mouseDoubleClick({ x: 100, y: 200 })
-await ctx.computer.mouseScroll({ x: 0, y: 0, deltaY: -3 })
-
-// Keyboard
-await ctx.computer.keyType('Hello, world!')
-await ctx.computer.keyPress('Return')
-await ctx.computer.hotkey(['Meta', 'C'])   // ⌘C on macOS
-
-// Clipboard
-const text = await ctx.computer.clipboardGet()
-await ctx.computer.clipboardSet('Copied text')
-
-// Shell & files
-const result = await ctx.computer.runShell('ls -la ~/Desktop')
-// result.exitCode / result.stdout / result.stderr
-
-const content = await ctx.computer.readFile('/Users/me/notes.txt')
-await ctx.computer.writeFile('/Users/me/output.md', '# Title\\n...')
-
-// AI-powered computer agent
-const agent = ctx.computer.createAgent('Open Safari and navigate to github.com', {
-  maxSteps: 10,
-  stepDelayMs: 800,
-})
-const agentResult = await agent.run(step => {
-  console.log(\`Step \${step.index}:\`, step.action.type)
-})
-// agentResult.success / agentResult.steps / agentResult.result`} />
-      </section>
-
-      <hr className="border-white/10 mb-12" />
-
-      {/* Memory */}
-      <section className="mb-12" id="memory">
-        <SectionHeading
-          id="memory"
-          icon={Brain}
-          color="bg-violet-400/10 border-violet-400/20 text-violet-400"
-          title="Memory API — ctx.memory"
-          subtitle="Persistent local memory and conversation history stored on-device in SQLite."
-        />
-        <p className="text-sm text-gray-400 mb-2">
-          Requires: <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.MemoryRead</code> / <code className="text-indigo-300 bg-indigo-900/30 px-1 py-0.5 rounded text-xs">Permission.MemoryWrite</code>
-        </p>
-        <p className="text-gray-400 text-sm leading-relaxed mb-4">
-          Memory is stored entirely on the user's machine — nothing is sent to our servers.
-          Use it to persist facts, preferences, and conversation context across runs.
-        </p>
-        <CodeBlock code={`// Write a memory entry (insert or update by title)
-const mem = await ctx.memory.upsert({
-  type: 'preference',   // 'fact'|'preference'|'instruction'|'episode'|'summary'|'workflow'
-  title: 'user_writing_style',
-  content: 'Prefers short paragraphs and active voice.',
-  source: 'my-module',
-})
-
-// List memories
-const memories = await ctx.memory.list({ type: 'preference', limit: 10 })
-
-// Build a system-prompt context block
-const contextBlock = await ctx.memory.buildContext({ maxEntries: 5 })
-// → "## Relevant context\\n- Prefers short paragraphs..."
-
-// Conversation history
-const SESSION = 'chat-abc123'
-await ctx.memory.appendMessages(SESSION, [
-  { role: 'user', content: 'Write me a blog post about Go.' },
-  { role: 'assistant', content: '...' },
-])
-const history = await ctx.memory.getHistory(SESSION, 20)
-
-// Stats
-const stats = await ctx.memory.stats()
-// stats.totalMemories / stats.byType`} />
-      </section>
-
-      <hr className="border-white/10 mb-12" />
-
-      {/* Full example */}
-      <section className="mb-10">
-        <h2 className="text-xl font-bold text-white mb-5">Complete Mini-App Example</h2>
-        <p className="text-gray-400 text-sm leading-relaxed mb-5">
-          A full writing assistant that uses AI generation, local storage, memory, and notifications:
-        </p>
-        <CodeBlock code={`import { defineModule, Permission } from '@agenthub/sdk'
-import type { ITool, IModuleContext } from '@agenthub/sdk'
-
-const generatePost: ITool = {
-  name: 'generate_post',
-  description: 'Generate a blog post on the given topic.',
-  inputSchema: {
-    type: 'object',
-    properties: {
-      topic: { type: 'string' },
-      tone: { type: 'string', enum: ['professional', 'casual', 'technical'] },
-    },
-    required: ['topic'],
-  },
-  async run(input, ctx: IModuleContext) {
-    // Load user writing preferences from memory
-    const memContext = await ctx.memory.buildContext({ maxEntries: 3 })
-
-    const { output, tokensUsed } = await ctx.ai.generate({
-      capability: 'write',
-      input: [
-        memContext,
-        \`Write a blog post on: \${input.topic}\`,
-        \`Tone: \${input.tone ?? 'professional'}\`,
-      ].join('\\n'),
-    })
-
-    // Persist the result
-    await ctx.storage.set('last_post', { topic: input.topic, content: output })
-
-    // Save this run as an episode memory
-    await ctx.memory.upsert({
-      type: 'episode',
-      title: \`Post: \${input.topic}\`,
-      content: \`Generated a \${output.length}-char post. Tokens used: \${tokensUsed}\`,
-    })
-
-    ctx.ui.notify({
-      title: 'Post generated ✓',
-      body: \`\${Math.round(output.length / 5)} words on "\${input.topic}"\`,
-      level: 'success',
-    })
-
-    return { content: output, tokensUsed }
-  },
-}
-
-export default defineModule({
-  manifest: {
-    name: 'Writing Assistant',
-    version: '1.0.0',
-    minCoreVersion: '1.0.0',
-    maxCoreVersion: '2.0.0',
-    description: 'AI-powered blog post generator.',
-    icon: '✍️',
-    category: 'writing',
-  },
-  permissions: [
-    Permission.AiGenerate,
-    Permission.StorageLocal,
-    Permission.UiNotify,
-    Permission.MemoryRead,
-    Permission.MemoryWrite,
-  ],
-  tools: [generatePost],
-  onActivate(ctx) {
-    ctx.ui.notify({ title: 'Writing Assistant ready', body: '', level: 'info' })
-  },
-})`} />
+graph = instrument_graph(my_langgraph_app, hub=hub, agent_id=agent_id)`} />
       </section>
     </div>
   )

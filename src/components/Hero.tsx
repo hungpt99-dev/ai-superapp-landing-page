@@ -1,19 +1,19 @@
-import { ArrowRight, Shield, Cpu, Puzzle, BarChart3, Lock } from 'lucide-react'
+import { ArrowRight, Activity, GitBranch, DollarSign, AlertTriangle, BookOpen } from 'lucide-react'
 
 const BADGES = [
-  { icon: Puzzle,          label: 'Multi‑agent orchestration'      },
-  { icon: BarChart3,       label: 'Deterministic planner'          },
-  { icon: Shield,          label: 'Capability enforcement'         },
-  { icon: BarChart3,       label: 'Token & cost tracking'         },
-  { icon: Cpu,             label: 'Local execution'                },
-  { icon: Lock,            label: 'Open‑source runtime'            },
+  { icon: Activity,      label: 'Real-time monitoring'   },
+  { icon: GitBranch,     label: 'Workflow visualization' },
+  { icon: DollarSign,    label: 'LLM cost tracking'      },
+  { icon: AlertTriangle, label: 'Error alerting'         },
+  { icon: BookOpen,      label: 'Run replay & debug'     },
+  { icon: Activity,      label: 'Multi-framework support'},
 ]
 
 const STATS = [
-  { value: 'Deterministic', label: 'Reproducible runs' },
-  { value: 'Permissioned',  label: 'Capability‑checked' },
-  { value: 'On‑device',     label: 'Local execution'     },
-  { value: 'Extensible',    label: 'Open SDK'            },
+  { value: '14,200',  label: 'Agent runs today'  },
+  { value: '3.9s',    label: 'Avg latency'        },
+  { value: '1.8%',    label: 'Error rate'         },
+  { value: '$132',    label: 'LLM cost today'     },
 ]
 
 export default function Hero() {
@@ -39,8 +39,8 @@ export default function Hero() {
         className="relative max-w-5xl text-5xl md:text-7xl font-extrabold leading-[1.08] tracking-tight animate-fade-up"
         style={{ animationDelay: '0.1s', opacity: 0 }}
       >
-        Complete complex work<br />
-        with one prompt.
+        The control plane for<br />
+        <span className="gradient-text">your AI agents.</span>
       </h1>
 
       {/* Sub */}
@@ -48,11 +48,9 @@ export default function Hero() {
         className="relative mt-6 max-w-2xl text-lg md:text-xl text-gray-400 leading-relaxed animate-fade-up"
         style={{ animationDelay: '0.25s', opacity: 0 }}
       >
-        A desktop runtime that validates agent definitions, compiles a deterministic,
-        multi‑agent DAG, and executes it on‑device. Every tool call, provider request,
-        memory access and cross‑agent message is checked against declared
-        capabilities; token usage and budgets are tracked per agent. Executions can
-        be snapshotted and replayed, and results stream back to the web UI.
+        AgentHub is the standard infrastructure platform for managing, monitoring,
+        and debugging AI agents in production. Get full observability into every run,
+        workflow, prompt and cost—across LangGraph, CrewAI, AutoGPT, and custom agents.
       </p>
 
       {/* CTAs */}
@@ -64,15 +62,15 @@ export default function Hero() {
           href="#pricing"
           className="group flex items-center gap-2 px-7 py-3.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-base transition-all glow hover:glow"
         >
-          Download for free
+          Start monitoring free
           <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
         </a>
         <a
-          href="#mini-apps"
+          href="/docs"
           className="group flex items-center gap-2 px-7 py-3.5 rounded-xl glass hover:bg-white/10 text-gray-200 font-semibold text-base transition-all"
         >
-          Browse Mini-Apps
-          <Puzzle size={16} className="text-indigo-400 group-hover:rotate-12 transition-transform" />
+          View documentation
+          <BookOpen size={16} className="text-indigo-400 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
 
@@ -116,7 +114,7 @@ export default function Hero() {
             <span className="ml-3 text-xs text-gray-600">AgentHub — Dashboard</span>
             <span className="ml-auto flex items-center gap-1.5 text-xs text-green-400">
               <span className="w-1.5 h-1.5 rounded-full bg-green-400 animate-pulse-slow" />
-              Agent runtime online
+              3 agents running
             </span>
           </div>
           {/* Dashboard layout */}
@@ -124,11 +122,11 @@ export default function Hero() {
             {/* Sidebar */}
             <div className="hidden sm:flex w-44 flex-col gap-1 p-3 border-r border-white/10 bg-white/[0.02]">
               {[
-                { emoji: '🏠', label: 'Dashboard',    active: true  },
-                { emoji: '🧩', label: 'Mini-Apps',    active: false },
-                { emoji: '💻', label: 'Devices',      active: false },
-                { emoji: '📊', label: 'Analytics',    active: false },
-                { emoji: '⚙️', label: 'Settings',     active: false },
+                { emoji: '🏠', label: 'Dashboard',  active: true  },
+                { emoji: '🤖', label: 'Agents',     active: false },
+                { emoji: '🔀', label: 'Workflows',  active: false },
+                { emoji: '📊', label: 'Metrics',    active: false },
+                { emoji: '📝', label: 'Logs',       active: false },
               ].map(({ emoji, label, active }) => (
                 <div
                   key={label}
@@ -143,12 +141,13 @@ export default function Hero() {
             </div>
             {/* Main area */}
             <div className="flex-1 p-5 flex flex-col gap-4">
-              {/* Top row: running app + device status */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {/* Top row: live metrics */}
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
                 {[
-                  { label: 'Active Mini-Apps', value: '3',        color: 'text-indigo-400'  },
-                  { label: 'Runs today',        value: '47',       color: 'text-green-400'   },
-                  { label: 'Tokens saved',      value: '$0.00',    color: 'text-yellow-400'  },
+                  { label: 'Agent Runs',   value: '14,200', color: 'text-indigo-400' },
+                  { label: 'Avg Latency',  value: '3.9s',   color: 'text-green-400'  },
+                  { label: 'Error Rate',   value: '1.8%',   color: 'text-yellow-400' },
+                  { label: 'LLM Cost',     value: '$132',   color: 'text-purple-400' },
                 ].map(({ label, value, color }) => (
                   <div key={label} className="bg-white/5 rounded-xl px-4 py-3">
                     <div className={`text-xl font-extrabold ${color}`}>{value}</div>
@@ -156,18 +155,21 @@ export default function Hero() {
                   </div>
                 ))}
               </div>
-              {/* Active mini-apps */}
+              {/* Active agents */}
               <div className="flex flex-col gap-2">
-                <p className="text-xs text-gray-600 uppercase tracking-widest">Running</p>
+                <p className="text-xs text-gray-600 uppercase tracking-widest">Active Agents</p>
                 {[
-                  { emoji: '✍️', name: 'SEO Writer',     status: 'Generating...', color: 'text-blue-400'   },
-                  { emoji: '💻', name: 'Code Assistant', status: 'Idle',          color: 'text-purple-400' },
-                  { emoji: '🔍', name: 'Research Agent', status: 'Searching...',  color: 'text-green-400'  },
-                ].map(({ emoji, name, status, color }) => (
+                  { name: 'research-agent-v2',  status: 'Running',  color: 'text-green-400'  },
+                  { name: 'code-review-agent',  status: 'Idle',     color: 'text-gray-500'   },
+                  { name: 'data-pipeline-agent',status: 'Error',    color: 'text-red-400'    },
+                ].map(({ name, status, color }) => (
                   <div key={name} className="flex items-center justify-between bg-white/5 rounded-xl px-4 py-2.5">
                     <div className="flex items-center gap-2.5">
-                      <span className="text-lg">{emoji}</span>
-                      <span className="text-sm font-medium text-gray-300">{name}</span>
+                      <span className={`w-2 h-2 rounded-full ${
+                        status === 'Running' ? 'bg-green-400 animate-pulse-slow' :
+                        status === 'Error'   ? 'bg-red-400'   : 'bg-gray-600'
+                      }`} />
+                      <span className="text-sm font-mono text-gray-300">{name}</span>
                     </div>
                     <span className={`text-xs ${color}`}>{status}</span>
                   </div>
@@ -177,7 +179,7 @@ export default function Hero() {
           </div>
         </div>
         <p className="text-center text-xs text-gray-700 mt-3">
-          Your real AI assistant — agent on your machine, mini-apps at your command
+          Live dashboard — full observability across all your AI agents in production
         </p>
       </div>
     </section>

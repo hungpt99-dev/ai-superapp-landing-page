@@ -1,37 +1,37 @@
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
-import { Zap, Github, Menu, X, ChevronRight } from 'lucide-react'
+import { Activity, Github, Menu, X, ChevronRight } from 'lucide-react'
 import { useState } from 'react'
 
 const NAV = [
   {
     group: 'Getting Started',
     items: [
-      { label: 'Overview', path: '/docs/overview' },
-      { label: 'Quickstart', path: '/docs/quickstart' },
+      { label: 'Overview',    path: '/docs/overview'   },
+      { label: 'Quickstart',  path: '/docs/quickstart' },
     ],
   },
   {
     group: 'SDK Reference',
     items: [
-      { label: 'defineModule', path: '/docs/sdk' },
-      { label: 'Permissions', path: '/docs/sdk#permissions' },
-      { label: 'AI Client', path: '/docs/sdk#ai-client' },
-      { label: 'Storage API', path: '/docs/sdk#storage' },
-      { label: 'UI API', path: '/docs/sdk#ui' },
-      { label: 'Event Bus', path: '/docs/sdk#events' },
-      { label: 'Computer API', path: '/docs/sdk#computer' },
-      { label: 'Memory API', path: '/docs/sdk#memory' },
+      { label: 'AgentHubClient',     path: '/docs/sdk'                },
+      { label: 'Agent Registry',     path: '/docs/sdk#agents'         },
+      { label: 'Event Ingestion',    path: '/docs/sdk#events'         },
+      { label: 'Workflows & Tasks',  path: '/docs/sdk#workflows'      },
+      { label: 'Framework Integrations', path: '/docs/sdk#integrations' },
+      { label: 'Metrics',            path: '/docs/sdk#metrics'        },
     ],
   },
   {
     group: 'REST API',
     items: [
-      { label: 'Authentication', path: '/docs/api' },
-      { label: 'Devices', path: '/docs/api#devices' },
-      { label: 'Bots', path: '/docs/api#bots' },
-      { label: 'Workspaces', path: '/docs/api#workspaces' },
-      { label: 'Marketplace', path: '/docs/api#marketplace' },
+      { label: 'Authentication', path: '/docs/api'               },
+      { label: 'Agents',         path: '/docs/api#agents'        },
+      { label: 'Events',         path: '/docs/api#events'        },
+      { label: 'Workflows',      path: '/docs/api#workflows'     },
+      { label: 'Tasks',          path: '/docs/api#tasks'         },
+      { label: 'Metrics',        path: '/docs/api#metrics'       },
+      { label: 'Logs',           path: '/docs/api#logs'          },
     ],
   },
 ]
@@ -53,7 +53,7 @@ export default function DocsLayout() {
       <header className="fixed top-0 left-0 right-0 z-50 h-14 border-b border-white/10 bg-gray-950/90 backdrop-blur-md flex items-center px-4 gap-4">
         <NavLink to="/" className="flex items-center gap-2 shrink-0">
           <span className="w-7 h-7 rounded-md bg-gradient-to-br from-indigo-500 to-purple-600 flex items-center justify-center shadow-lg">
-            <Zap size={14} className="text-white" />
+            <Activity size={14} className="text-white" />
           </span>
           <span className="font-bold text-sm tracking-tight hidden sm:block">
             Agent<span className="gradient-text">Hub</span>

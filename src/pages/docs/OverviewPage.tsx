@@ -1,5 +1,5 @@
 import { NavLink } from 'react-router-dom'
-import { ArrowRight, Monitor, Globe, Server, Puzzle, Shield, Bot, Package } from 'lucide-react'
+import { ArrowRight, Activity, Server, LayoutDashboard, Plug, GitBranch, Search, DollarSign, Bell, Database } from 'lucide-react'
 
 export default function OverviewPage() {
   return (
@@ -13,9 +13,9 @@ export default function OverviewPage() {
           AgentHub Overview
         </h1>
         <p className="text-lg text-gray-400 leading-relaxed max-w-2xl">
-          AgentHub is a platform that brings a real AI assistant to your desktop and makes
-          it controllable from any browser — with a growing ecosystem of agents you
-          can install, run, and build.
+          AgentHub is the standard infrastructure platform for managing, monitoring, and debugging
+          AI agents in production. Think of it as Datadog for AI agents — a unified control plane
+          that gives your team full observability across every agent run, workflow, prompt, and cost.
         </p>
       </div>
 
@@ -25,34 +25,33 @@ export default function OverviewPage() {
       <section className="mb-12">
         <h2 className="text-2xl font-bold text-white mb-6">Architecture</h2>
         <p className="text-gray-400 mb-6 leading-relaxed">
-          The platform has three independent layers. Each layer has a clear, single
-          responsibility:
+          The platform has three independent layers. Each layer has a clear, single responsibility:
         </p>
         <div className="grid sm:grid-cols-3 gap-4 mb-8">
           {[
             {
-              icon: Monitor,
+              icon: Plug,
               color: 'text-indigo-400',
               bg: 'bg-indigo-400/10 border-indigo-400/20',
-              title: 'Desktop Agent',
-              subtitle: 'Runs on your machine',
-              desc: 'The Electron + React desktop client. Executes agents, talks directly to your AI provider, and polls the backend for bot tasks.',
+              title: 'Agent SDK / Instrumentation',
+              subtitle: 'Runs inside your agents',
+              desc: 'A lightweight SDK (or plain HTTP) that instruments your agents and streams structured events (agent_started, tool_called, llm_prompt_sent, etc.) to the backend in real time.',
             },
             {
               icon: Server,
               color: 'text-purple-400',
               bg: 'bg-purple-400/10 border-purple-400/20',
-              title: 'Go Backend',
-              subtitle: 'Management API only',
-              desc: 'Handles auth, device registration, bot task queuing, workspaces, and marketplace. It never sees your AI prompts or outputs.',
+              title: 'AgentHub Backend',
+              subtitle: 'Event ingestion & management API',
+              desc: 'A Go backend that receives events, stores run history, computes metrics, manages agent registry and workflows, and exposes a REST API for the dashboard and external integrations.',
             },
             {
-              icon: Globe,
+              icon: LayoutDashboard,
               color: 'text-cyan-400',
               bg: 'bg-cyan-400/10 border-cyan-400/20',
               title: 'Web Dashboard',
-              subtitle: 'Control from any browser',
-              desc: 'A React web app that lets you manage devices, create bots, monitor runs, and browse the agent marketplace from any browser.',
+              subtitle: 'Your observability UI',
+              desc: 'A React + Next.js web app that renders live agent dashboards, workflow DAG visualizations, run inspectors, cost charts, and log explorers. Accessible from any browser.',
             },
           ].map(({ icon: Icon, color, bg, title, subtitle, desc }) => (
             <div key={title} className="glass rounded-xl p-5 flex flex-col gap-3">
@@ -68,62 +67,36 @@ export default function OverviewPage() {
           ))}
         </div>
 
-        <p className="text-gray-400 mb-6 leading-relaxed">
-          The desktop agent contains the runtime: core logic, orchestrator and
-          execution engine compiled as a deterministic DAG. When a bot run
-          arrives the runtime validates agent definitions, resolves inter‑agent
-          calls into a fixed graph, and schedules nodes on a worker pool. Every
-          operation – tool call, LLM request, memory read/write, or cross‑agent
-          message – is gated by its declared capabilities. Tokens and estimated
-          cost are logged per agent and budget limits are enforced on the fly.
-          Runs may be snapshotted and later replayed deterministically for
-          debugging.
-        </p>
-        <p className="text-gray-400 mb-6 leading-relaxed">
-          The same core packages execute in Node.js or Tauri, and snapshots can be
-          replayed in any browser; the web dashboard itself never runs agents.
-        </p>
-
         {/* Flow diagram */}
         <div className="glass rounded-xl p-6 font-mono text-sm">
-          <p className="text-gray-500 mb-4 font-sans text-xs uppercase tracking-widest">Request flow</p>
+          <p className="text-gray-500 mb-4 font-sans text-xs uppercase tracking-widest">Event flow</p>
           <div className="flex flex-col gap-2 text-xs">
             <div className="flex items-center gap-3">
-              <span className="text-indigo-400 font-semibold">Web Dashboard</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-purple-400 font-semibold">POST /v1/bots/&#123;id&#125;/runs</span>
+              <span className="text-indigo-400 font-semibold">Your Agent</span>
+              <span className="text-gray-600">────────►</span>
+              <span className="text-purple-400 font-semibold">POST /v1/events</span>
               <span className="text-gray-600">──►</span>
-              <span className="text-cyan-400">Backend (queues task)</span>
+              <span className="text-cyan-400">Backend (stores event)</span>
             </div>
             <div className="flex items-center gap-3 ml-8">
               <span className="text-gray-600">▼</span>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-indigo-400 font-semibold">Desktop Agent</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-purple-400 font-semibold">GET /v1/agents/poll</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-cyan-400">Claims pending run</span>
-            </div>
-            <div className="flex items-center gap-3 ml-8">
-              <span className="text-gray-600">▼</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-indigo-400 font-semibold">Desktop Agent</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-green-400 font-semibold">AI Provider directly</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-cyan-400">Your OpenAI / Anthropic key</span>
-            </div>
-            <div className="flex items-center gap-3 ml-8">
-              <span className="text-gray-600">▼</span>
-            </div>
-            <div className="flex items-center gap-3">
-              <span className="text-indigo-400 font-semibold">Desktop Agent</span>
-              <span className="text-gray-600">──────►</span>
-              <span className="text-purple-400 font-semibold">PATCH /v1/bots/runs/&#123;id&#125;</span>
+              <span className="text-cyan-400 font-semibold">Backend</span>
+              <span className="text-gray-600">──────────►</span>
+              <span className="text-green-400 font-semibold">Metrics aggregated</span>
               <span className="text-gray-600">──►</span>
-              <span className="text-cyan-400">Reports result</span>
+              <span className="text-cyan-400">latency, errors, cost</span>
+            </div>
+            <div className="flex items-center gap-3 ml-8">
+              <span className="text-gray-600">▼</span>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-pink-400 font-semibold">Web Dashboard</span>
+              <span className="text-gray-600">──────►</span>
+              <span className="text-purple-400 font-semibold">GET /v1/agents/:id/metrics</span>
+              <span className="text-gray-600">──►</span>
+              <span className="text-cyan-400">Live charts & alerts</span>
             </div>
           </div>
         </div>
@@ -135,42 +108,41 @@ export default function OverviewPage() {
         <div className="flex flex-col gap-5">
           {[
             {
-              icon: Puzzle,
-              color: 'text-purple-400',
-              title: 'Agents',
-              desc: 'Self-contained AI tools built with the TypeScript SDK. Each agent declares its required capabilities upfront. Users install them from the marketplace with one click. Developers earn 70% of every sale.',
-            },
-            {
-              icon: Bot,
+              icon: Activity,
               color: 'text-indigo-400',
-              title: 'Bots',
-              desc: 'Bots are automated tasks you configure in the Dashboard and queue to run on your Desktop Agent. A bot has a name, a goal, and a run history. The agent polls for pending bot runs, executes them locally, and reports the result back.',
+              title: 'Agents',
+              desc: 'The units of AI work you register and monitor. An agent has a name, version, framework (LangGraph, CrewAI, etc.), and lifecycle status (active, idle, error, deprecated). The registry is your central source of truth.',
             },
             {
-              icon: Shield,
+              icon: Bell,
+              color: 'text-purple-400',
+              title: 'Events',
+              desc: 'Structured telemetry messages emitted by your agents: agent_started, tool_called, llm_prompt_sent, llm_response_received, agent_completed, agent_failed. Events are the raw material for all observability features.',
+            },
+            {
+              icon: GitBranch,
               color: 'text-green-400',
-              title: 'Capabilities',
-              desc: 'Every agent lists the capabilities it needs (ai.generate, storage.read, computer.files, etc.). The runtime verifies grants before tool calls, provider calls, memory access and cross-agent messages.',
+              title: 'Workflows',
+              desc: 'Multi-step agentic pipelines composed of tasks. Workflows define how agents collaborate — Planner → Research → Tool → Writer. Visualized as interactive DAG graphs in the dashboard.',
             },
             {
-              icon: Globe,
+              icon: Search,
               color: 'text-cyan-400',
-              title: 'Workspaces',
-              desc: 'Workspaces are organisational containers for your runs and history. You can have multiple workspaces (personal, work, team) and filter run history by workspace.',
+              title: 'Runs',
+              desc: 'A single execution of an agent or workflow. Each run has a full trace — every step, tool call, LLM prompt, reasoning output, and final result. Runs can be inspected step-by-step or replayed deterministically.',
             },
             {
-              icon: Monitor,
-              color: 'text-amber-400',
-              title: 'Devices',
-              desc: 'Each installation of the Desktop Agent is a registered device. You can have multiple devices (laptop, desktop, home server) connected to the same account and see which ones are online from the Dashboard.',
-            },
-            {
-              icon: Package,
+              icon: DollarSign,
               color: 'text-yellow-400',
-              title: 'Extensibility',
-              desc: 'The SDK and plugin system let you add custom providers, tools, memory backends, and UI components. Agents and modules execute in isolated sandboxes with explicit permissions.',
+              title: 'Metrics',
+              desc: 'Aggregated performance data computed from events: run count, latency (P50/P95/P99), error rate, token usage, and LLM cost. Available per agent, per workflow, or across your entire fleet.',
             },
-
+            {
+              icon: Database,
+              color: 'text-rose-400',
+              title: 'Logs',
+              desc: 'Structured log entries attached to agent runs. Searchable, filterable by agent, run, severity, and time range. Used alongside metrics for root cause analysis.',
+            },
           ].map(({ icon: Icon, color, title, desc }) => (
             <div key={title} className="glass rounded-xl p-5 flex gap-4">
               <div className="shrink-0 mt-0.5">
@@ -193,21 +165,21 @@ export default function OverviewPage() {
             {
               to: '/docs/quickstart',
               title: 'Quickstart',
-              desc: 'Install the Desktop Agent and run your first agent in under 5 minutes.',
+              desc: 'Connect your first agent and see live events flowing to the dashboard in under 5 minutes.',
               badge: 'Start here',
               badgeColor: 'bg-indigo-600 text-white',
             },
             {
               to: '/docs/sdk',
               title: 'SDK Reference',
-              desc: 'Full TypeScript SDK documentation for building your own agents.',
+              desc: 'Full TypeScript SDK documentation for instrumenting agents and configuring integrations.',
               badge: 'Developers',
               badgeColor: 'bg-purple-600/30 text-purple-300',
             },
             {
               to: '/docs/api',
               title: 'REST API',
-              desc: 'Complete API reference for devices, bots, workspaces, and the marketplace.',
+              desc: 'Complete API reference for agents, events, workflows, tasks, metrics, and logs.',
               badge: 'API',
               badgeColor: 'bg-cyan-600/30 text-cyan-300',
             },

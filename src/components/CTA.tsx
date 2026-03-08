@@ -1,4 +1,4 @@
-import { ArrowRight, Zap } from 'lucide-react'
+import { ArrowRight, Activity } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
 export default function CTA() {
@@ -13,22 +13,22 @@ export default function CTA() {
 
           <div className="relative">
             <div className="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-500 to-purple-600 shadow-xl mb-6">
-              <Zap size={24} className="text-white" />
+              <Activity size={24} className="text-white" />
             </div>
             <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
-              A runtime you control.<br />
-              <span className="gradient-text">Execute multi‑agent workflows.</span>
+              The standard platform for<br />
+              <span className="gradient-text">operating AI agents in production.</span>
             </h2>
             <p className="text-gray-400 text-lg max-w-xl mx-auto mb-10">
-              Runs on your desktop. Full visibility, permissions, and replay.
-              Start for free with no credit card.
+              Join teams using AgentHub to monitor, debug, and optimize their AI agents.
+              Full observability. No infrastructure overhead. Start free.
             </p>
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
               <a
                 href="#pricing"
                 className="group flex items-center gap-2 px-8 py-4 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-semibold text-base transition-all glow hover:scale-105"
               >
-                Download Desktop Agent
+                Start monitoring free
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
               </a>
               <Link

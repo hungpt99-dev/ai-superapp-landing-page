@@ -1,28 +1,36 @@
+import { Plug, Radio, LayoutDashboard, Bug } from 'lucide-react'
+
 const STEPS = [
   {
     step: '01',
-    title: 'Install the Desktop Agent',
+    icon: Plug,
+    title: 'Connect your agents',
     description:
-      'One-click macOS/Windows/Linux package. The runtime lives on your machine and exposes a WebSocket bridge.',
+      'Integrate AgentHub in minutes using our SDK, REST API, or webhook endpoint. Works with LangGraph, CrewAI, AutoGPT, and any custom agent framework.',
     color: 'from-blue-500 to-indigo-500',
   },
   {
     step: '02',
-    title: 'Define agents and permissions',
-    description: `Use the dashboard or TypeScript SDK to author agents with tools, memory scopes, model settings and required capability grants.`,
+    icon: Radio,
+    title: 'Events stream automatically',
+    description:
+      'Every significant action — agent_started, tool_called, llm_prompt_sent, llm_response_received, agent_completed — is captured and streamed to the platform in real time.',
     color: 'from-indigo-500 to-purple-500',
   },
   {
     step: '03',
-    title: 'Send a prompt from the web',
+    icon: LayoutDashboard,
+    title: 'Monitor and visualize',
     description:
-      'The browser is a remote UI; input is relayed securely to the desktop agent for execution. No AI work happens in the cloud.',
+      'See live metrics (runs, latency, error rate, LLM cost) on a unified dashboard. Explore multi-agent workflows as interactive DAG graphs updated in real time.',
     color: 'from-purple-500 to-pink-500',
   },
   {
     step: '04',
-    title: 'Runtime plans and executes',
-    description: `Core validates definitions, compiles a deterministic DAG spanning multiple agents, then the execution engine schedules nodes on a worker pool, enforces capability grants, token budgets and call‑depth limits, and streams outputs incrementally. Runs can be snapshotted for deterministic replay.`,
+    icon: Bug,
+    title: 'Debug and replay',
+    description:
+      'Open any run in the inspector to see every step, prompt, reasoning trace, and tool call. Replay failed runs deterministically to reproduce and fix production issues fast.',
     color: 'from-pink-500 to-rose-500',
   },
 ]
@@ -39,15 +47,15 @@ export default function HowItWorks() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">How it works</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Up and running in <span className="gradient-text">4 steps</span>
+            Full observability in <span className="gradient-text">4 steps</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            No server config, no DevOps. Install, configure your model, and the local runtime is ready.
+            No infrastructure to manage. Connect your agents and gain instant production observability.
           </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {STEPS.map(({ step, title, description, color }) => (
+          {STEPS.map(({ step, icon: Icon, title, description, color }) => (
             <div
               key={step}
               className="glass rounded-2xl p-7 hover:bg-white/[0.07] transition-colors group"
@@ -56,9 +64,10 @@ export default function HowItWorks() {
                 <div
                   className={`shrink-0 w-12 h-12 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform`}
                 >
-                  <span className="text-white font-extrabold text-sm">{step}</span>
+                  <Icon size={20} className="text-white" />
                 </div>
                 <div>
+                  <div className="text-xs font-bold text-gray-600 mb-1">Step {step}</div>
                   <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
                   <p className="text-gray-400 text-sm leading-relaxed">{description}</p>
                 </div>
@@ -69,13 +78,13 @@ export default function HowItWorks() {
 
         {/* Flow diagram */}
         <div className="mt-14 glass rounded-2xl p-6">
-          <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-6">Execution flow example</p>
+          <p className="text-center text-xs text-gray-500 uppercase tracking-widest mb-6">Event flow example</p>
           <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-center">
             {[
-              { label: 'Prompt sent',               note: 'web UI -> desktop agent',         emoji: '✉️' },
-          { label: 'Runtime validates & plans', note: 'deterministic graph of agents computed',        emoji: '🧠' },
-          { label: 'Nodes execute locally',     note: 'capabilities checked, tokens counted', emoji: '⚙️' },
-          { label: 'Output streams back',       note: 'live tokens to browser',          emoji: '📡' },
+              { label: 'Agent starts',         note: 'agent_started event emitted',         emoji: '🤖' },
+              { label: 'Tool called',           note: 'tool_called + result captured',        emoji: '🔧' },
+              { label: 'LLM prompt sent',       note: 'prompt & tokens logged',              emoji: '🧠' },
+              { label: 'Run completed',         note: 'full trace stored for replay',        emoji: '✅' },
             ].map((item, i, arr) => (
               <div key={item.label} className="flex items-center gap-3 flex-1">
                 <div className="flex-1 flex flex-col items-center gap-1">

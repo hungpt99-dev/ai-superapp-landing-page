@@ -1,143 +1,144 @@
 import {
-  Lock, Wifi, Puzzle, Zap, BarChart3, Cpu,
-  RefreshCw, ShieldCheck, LayoutDashboard, MonitorSmartphone,
-  PackageCheck, Users, Shield, EyeOff,
+  Activity, GitBranch, Search, RefreshCw,
+  LayoutDashboard, BarChart3, DollarSign, Bell,
+  Database, Settings, Users, Network,
+  Plug, Code2, Webhook, Globe,
 } from 'lucide-react'
 
 const FEATURE_GROUPS = [
   {
-    group: '⚙️ Runtime & orchestration',
-    subtitle: 'Layered architecture compiles a deterministic DAG executed across agents.',
+    group: '🔍 Observability & Debugging',
+    subtitle: 'See exactly what your agents are doing at every step.',
     items: [
       {
-        icon: Puzzle,
-        title: 'Deterministic planner',
-        description: 'Core layer turns agent definitions into a fixed, replayable DAG; execution order never varies.',
+        icon: Search,
+        title: 'Run Inspector',
+        description: 'Step-by-step trace of every agent run — tool calls, LLM prompts, reasoning, and outputs captured in sequence.',
         color: 'text-indigo-400',
         bg: 'bg-indigo-400/10 border-indigo-400/20',
       },
       {
-        icon: Users,
-        title: 'Agent delegation',
-        description: 'Agents invoke others using a protocol that propagates or restricts capabilities with call‑depth limits.',
+        icon: RefreshCw,
+        title: 'Run Replay',
+        description: 'Deterministically replay any past run to reproduce bugs, test fixes, and validate performance improvements.',
         color: 'text-purple-400',
         bg: 'bg-purple-400/10 border-purple-400/20',
       },
       {
-        icon: BarChart3,
-        title: 'Token & budget tracking',
-        description: 'Prompt/completion tokens logged per agent and aggregated; budgets enforced at runtime.',
-        color: 'text-yellow-400',
-        bg: 'bg-yellow-400/10 border-yellow-400/20',
-      },
-      {
-        icon: Lock,
-        title: 'Capability checks',
-        description: 'Every tool call, memory access and cross‑agent message is verified against grants.',
-        color: 'text-green-400',
-        bg: 'bg-green-400/10 border-green-400/20',
-      },
-    ],
-  },
-  {
-    group: '💻 Local & host environments',
-    subtitle: 'Runtime packages for desktop with a read‑only web UI.',
-    items: [
-      {
-        icon: Cpu,
-        title: 'Desktop runtime',
-        description: 'Agent execution and provider calls happen on your machine; no third‑party cloud layer.',
-        color: 'text-blue-400',
-        bg: 'bg-blue-400/10 border-blue-400/20',
-      },
-      {
-        icon: Wifi,
-        title: 'Web dashboard only UI',
-        description: 'Browser is a remote control that streams state; it does not execute agents.',
-        color: 'text-sky-400',
-        bg: 'bg-sky-400/10 border-sky-400/20',
-      },
-      {
-        icon: MonitorSmartphone,
-        title: 'Environment support',
-        description: 'Core, execution and adapters run in Node or Tauri; snapshots replay in browser.',
-        color: 'text-indigo-400',
-        bg: 'bg-indigo-400/10 border-indigo-400/20',
-      },
-      {
-        icon: Lock,
-        title: 'Open source',
-        description: 'Source for core packages is available on GitHub under MIT.',
-        color: 'text-gray-400',
-        bg: 'bg-gray-400/10 border-gray-400/20',
-      },
-    ],
-  },
-  {
-    group: '🛡 Security & Policies',
-    subtitle: 'Built‑in enforcement at runtime.',
-    items: [
-      {
-        icon: ShieldCheck,
-        title: 'Sandboxed modules',
-        description: 'Agents and skills execute in a sandbox with explicit permissions.',
-        color: 'text-rose-400',
-        bg: 'bg-rose-400/10 border-rose-400/20',
-      },
-      {
-        icon: EyeOff,
-        title: 'Memory scope controls',
-        description: 'Each agent only sees the memory it is granted.',
+        icon: Activity,
+        title: 'Prompt & Reasoning Trace',
+        description: 'Full prompt history, model responses, and chain-of-thought reasoning logged per agent per run.',
         color: 'text-pink-400',
         bg: 'bg-pink-400/10 border-pink-400/20',
       },
       {
-        icon: PackageCheck,
-        title: 'Policy engine',
-        description: 'Budget and access policies evaluated before execution.',
-        color: 'text-teal-400',
-        bg: 'bg-teal-400/10 border-teal-400/20',
-      },
-      {
-        icon: RefreshCw,
-        title: 'Snapshot & replay',
-        description: 'Every run can be saved and deterministically replayed for debugging.',
-        color: 'text-lime-400',
-        bg: 'bg-lime-400/10 border-lime-400/20',
+        icon: Bell,
+        title: 'Error Monitoring & Alerts',
+        description: 'Instant alerts on agent failures, performance regressions, and cost anomalies via email or webhook.',
+        color: 'text-red-400',
+        bg: 'bg-red-400/10 border-red-400/20',
       },
     ],
   },
   {
-    group: '📦 Extensibility',
-    subtitle: 'Open SDK and marketplace.',
+    group: '📊 Monitoring & Metrics',
+    subtitle: 'Real-time production dashboards for all your agents.',
     items: [
       {
-        icon: Zap,
-        title: 'TypeScript SDK',
-        description: 'Define agents, tools and providers programmatically.',
-        color: 'text-orange-400',
-        bg: 'bg-orange-400/10 border-orange-400/20',
+        icon: LayoutDashboard,
+        title: 'Real-time Dashboard',
+        description: 'Live overview of active agents, run counts, latency percentiles, error rates, and LLM usage across your entire fleet.',
+        color: 'text-blue-400',
+        bg: 'bg-blue-400/10 border-blue-400/20',
       },
       {
-        icon: PackageCheck,
-        title: 'Plugin architecture',
-        description: 'Custom providers, tools, memory backends and UI components.',
+        icon: BarChart3,
+        title: 'Performance Metrics',
+        description: 'P50/P95/P99 latency, throughput, success rate, and token usage tracked over time with historical charts.',
+        color: 'text-sky-400',
+        bg: 'bg-sky-400/10 border-sky-400/20',
+      },
+      {
+        icon: DollarSign,
+        title: 'Cost Tracking',
+        description: 'Track LLM spend per agent, per workflow, and per team. Break down token usage and set budget alerts.',
+        color: 'text-green-400',
+        bg: 'bg-green-400/10 border-green-400/20',
+      },
+      {
+        icon: GitBranch,
+        title: 'Workflow Visualization',
+        description: 'Interactive DAG graph of multi-agent workflows — see Planner → Research → Tool → Writer flows in real time.',
+        color: 'text-teal-400',
+        bg: 'bg-teal-400/10 border-teal-400/20',
+      },
+    ],
+  },
+  {
+    group: '🤖 Agent Lifecycle Management',
+    subtitle: 'Register, version, and manage agents across their full lifecycle.',
+    items: [
+      {
+        icon: Database,
+        title: 'Agent Registry',
+        description: 'Central registry for all your agents with versioning, metadata, capability declarations, and deployment history.',
         color: 'text-yellow-400',
         bg: 'bg-yellow-400/10 border-yellow-400/20',
       },
       {
-        icon: Users,
-        title: 'Marketplace',
-        description: 'Browse and install community agents with a click.',
-        color: 'text-purple-400',
-        bg: 'bg-purple-400/10 border-purple-400/20',
+        icon: Settings,
+        title: 'Lifecycle Management',
+        description: 'Track agent status (active, idle, error, deprecated). Promote, roll back, or retire agent versions with audit trail.',
+        color: 'text-orange-400',
+        bg: 'bg-orange-400/10 border-orange-400/20',
       },
       {
-        icon: Lock,
-        title: 'Open platform',
-        description: 'Source for core packages available on GitHub.',
-        color: 'text-green-400',
-        bg: 'bg-green-400/10 border-green-400/20',
+        icon: Users,
+        title: 'Multi-agent Collaboration',
+        description: 'Model and monitor agent-to-agent communication — which agents delegate to which, and how data flows between them.',
+        color: 'text-violet-400',
+        bg: 'bg-violet-400/10 border-violet-400/20',
+      },
+      {
+        icon: Network,
+        title: 'Workflow Automation',
+        description: 'Define multi-step agentic workflows as reusable templates and trigger them via API, schedule, or event.',
+        color: 'text-indigo-400',
+        bg: 'bg-indigo-400/10 border-indigo-400/20',
+      },
+    ],
+  },
+  {
+    group: '🔌 Integrations',
+    subtitle: 'Works with every major AI agent framework out of the box.',
+    items: [
+      {
+        icon: Plug,
+        title: 'Framework SDKs',
+        description: 'First-class SDKs for LangGraph, CrewAI, AutoGPT, and OpenClaw. Drop-in integrations that take under 5 minutes.',
+        color: 'text-cyan-400',
+        bg: 'bg-cyan-400/10 border-cyan-400/20',
+      },
+      {
+        icon: Code2,
+        title: 'REST API',
+        description: 'Ingest events from any agent via a simple REST API. No framework lock-in — bring your own custom agent.',
+        color: 'text-lime-400',
+        bg: 'bg-lime-400/10 border-lime-400/20',
+      },
+      {
+        icon: Webhook,
+        title: 'Webhooks',
+        description: 'Push run results, alerts, and status changes to any endpoint — Slack, PagerDuty, or your own systems.',
+        color: 'text-rose-400',
+        bg: 'bg-rose-400/10 border-rose-400/20',
+      },
+      {
+        icon: Globe,
+        title: 'OpenTelemetry Export',
+        description: 'Export traces and metrics to Datadog, Grafana, Jaeger, or any OTLP-compatible observability backend.',
+        color: 'text-purple-400',
+        bg: 'bg-purple-400/10 border-purple-400/20',
       },
     ],
   },
@@ -154,12 +155,11 @@ export default function Features() {
         <div className="text-center mb-16">
           <p className="text-indigo-400 text-sm font-semibold uppercase tracking-widest mb-3">Features</p>
           <h2 className="text-4xl md:text-5xl font-extrabold tracking-tight">
-            Core runtime features, security, and extensibility.<br />
-            <span className="gradient-text">Designed for local control.</span>
+            Everything you need to operate<br />
+            <span className="gradient-text">AI agents in production.</span>
           </h2>
           <p className="mt-4 text-gray-400 text-lg max-w-xl mx-auto">
-            A layered, capability‑checked system with deterministic execution and
-            an open SDK.
+            Full-stack observability, monitoring, and lifecycle management for any AI agent framework.
           </p>
         </div>
 
